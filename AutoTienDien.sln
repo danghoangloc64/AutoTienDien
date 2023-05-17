@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33529.622
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTienDien", "AutoTienDien\AutoTienDien.csproj", "{F8058438-8FF1-4054-98B9-BB555FBAC00B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8058438-8FF1-4054-98B9-BB555FBAC00B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8058438-8FF1-4054-98B9-BB555FBAC00B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8058438-8FF1-4054-98B9-BB555FBAC00B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8058438-8FF1-4054-98B9-BB555FBAC00B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B4BADF0C-9202-47BC-A683-AF94347EB8B4}
+	EndGlobalSection
+EndGlobal

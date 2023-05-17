@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AutoTienDien.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Key2Captcha" Type="System.String" Scope="User">
+      <Value Profile="(Default)">b0c8e9bc6c492644481aa41dc8e1dadb</Value>
+    </Setting>
+    <Setting Name="SDT" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0984402236</Value>
+    </Setting>
+    <Setting Name="ExcelFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Nghi" Type="System.String" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="Keytinsoftproxy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">TLp3d2etyTc2OTxm7GnxbLbkJLKWlQBMw5ysZr</Value>
+    </Setting>
+    <Setting Name="UserProxy" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
