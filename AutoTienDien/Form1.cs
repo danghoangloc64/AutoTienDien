@@ -94,6 +94,7 @@ namespace AutoTienDien
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Check.CheckTime();
             LoadProfile();
             txtKey2Captcha.Text = Properties.Settings.Default.Key2Captcha;
             txtSDT.Text = Properties.Settings.Default.SDT;
@@ -189,6 +190,7 @@ namespace AutoTienDien
         {
             CloseAllChrome();
             CloseAllChromeDriver();
+            Check.CheckTime();
 
 
             captcha = new _2Captcha(txtKey2Captcha.Text);
@@ -252,6 +254,7 @@ namespace AutoTienDien
 
             for (int i = 0; i < soLuong; i++)
             {
+                Check.CheckTime();
                 m_bIsRunning = true;
                 var queryResultPage = m_listExcelDataModels.Skip(soItemMoiLuong * i).Take(soItemMoiLuong).ToList();
                 string profile = cbbProfile.Items[i].ToString();
@@ -314,14 +317,15 @@ namespace AutoTienDien
 
                     service.HideCommandPromptWindow = true;
                     ChromeDriver driver = new ChromeDriver(service, options);
-                    driver.Manage().Window.Size = new Size(275, 550);
-                    driver.Manage().Window.Position = new Point(stt * 260, 0);
+                    driver.Manage().Window.Size = new Size(300, 575);
+                    driver.Manage().Window.Position = new Point(stt * 290, 0);
 
 
 
 
                     foreach (var data in excelDataModels)
                     {
+                        Check.CheckTime();
                         try
                         {
                             if (countCheck > 3)
@@ -374,8 +378,8 @@ namespace AutoTienDien
 
                                 service.HideCommandPromptWindow = true;
                                 driver = new ChromeDriver(service, options);
-                                driver.Manage().Window.Size = new Size(275, 550);
-                                driver.Manage().Window.Position = new Point(stt * 260, 0);
+                                driver.Manage().Window.Size = new Size(300, 575);
+                                driver.Manage().Window.Position = new Point(stt * 290, 0);
                             }
 
                             IJavaScriptExecutor executorUseData = driver;
@@ -433,10 +437,20 @@ namespace AutoTienDien
                             //Actions actions = new Actions(driver);
                             //actions.MoveToElement(element);
                             //actions.Perform();
+                            Thread.Sleep(5000);
 
-                            Stop();
-                            Thread.Sleep(sleep);
-                            Stop();
+                            string url = driver.Url;
+
+                            while (true)
+                            {
+                                if (url != driver.Url)
+                                {
+                                    Thread.Sleep(2000);
+                                    break;
+                                }    
+                                Thread.Sleep(2000);
+                                Stop();
+                            }    
                         }
                         catch (Exception ex)
                         {
