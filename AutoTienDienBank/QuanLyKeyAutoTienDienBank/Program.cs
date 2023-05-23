@@ -1,12 +1,10 @@
-﻿using Common.BLL;
-using Common.Methods;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AutoTienDienBank
+namespace QuanLyKeyAutoTienDienBank
 {
     static class Program
     {
@@ -18,15 +16,7 @@ namespace AutoTienDienBank
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            string serialNumber = CommonMethod.GetSerialNumber();
-            if ((new InformationBLL()).CheckSerialNumber(serialNumber) == false)
-            {
-                Application.Run(new DangKyAutoTienDienBank(serialNumber));
-            }
-            else
-            {
-                Application.Run(new MainForm());
-            }
+            Application.Run(new MainForm());
         }
     }
 }

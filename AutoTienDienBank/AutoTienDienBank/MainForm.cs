@@ -1,4 +1,6 @@
-﻿using ExcelDataReader;
+﻿using Common.BLL;
+using Common.Methods;
+using ExcelDataReader;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,14 +15,14 @@ using System.Windows.Forms;
 
 namespace AutoTienDienBank
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private List<ExcelDataModel> m_listExcelDataModels;
         private string m_strDeviceID;
         private bool m_bRunning;
         private int m_iSleepTime;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -426,6 +428,11 @@ namespace AutoTienDienBank
         private void btnDung_Click(object sender, EventArgs e)
         {
             m_bRunning = false;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            txtMa.Text = CommonMethod.GetSerialNumber();
         }
     }
 }

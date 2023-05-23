@@ -1,7 +1,7 @@
 ﻿
 namespace AutoTienDienBank
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -45,6 +45,8 @@ namespace AutoTienDienBank
             this.radioButtonVPB = new System.Windows.Forms.RadioButton();
             this.btnChay = new System.Windows.Forms.Button();
             this.btnDung = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtMa = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnSelectExcel
@@ -193,11 +195,30 @@ namespace AutoTienDienBank
             this.btnDung.UseVisualStyleBackColor = true;
             this.btnDung.Click += new System.EventHandler(this.btnDung_Click);
             // 
-            // Form1
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 179);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(25, 13);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "Mã:";
+            // 
+            // txtMa
+            // 
+            this.txtMa.Location = new System.Drawing.Point(46, 175);
+            this.txtMa.Name = "txtMa";
+            this.txtMa.ReadOnly = true;
+            this.txtMa.Size = new System.Drawing.Size(491, 20);
+            this.txtMa.TabIndex = 33;
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 175);
+            this.ClientSize = new System.Drawing.Size(551, 207);
+            this.Controls.Add(this.txtMa);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnDung);
             this.Controls.Add(this.btnChay);
             this.Controls.Add(this.radioButtonVPB);
@@ -215,9 +236,12 @@ namespace AutoTienDienBank
             this.Controls.Add(this.txtExcel);
             this.Controls.Add(this.label5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Form1";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Auto Tien Dien Bank";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,6 +264,8 @@ namespace AutoTienDienBank
         private System.Windows.Forms.RadioButton radioButtonVPB;
         private System.Windows.Forms.Button btnChay;
         private System.Windows.Forms.Button btnDung;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtMa;
     }
 }
 

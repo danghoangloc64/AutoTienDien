@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.33529.622
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTienDienBank", "AutoTienDienBank\AutoTienDienBank.csproj", "{F72328A8-4202-446F-B66E-D3F402A11769}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyKeyAutoTienDienBank", "QuanLyKeyAutoTienDienBank\QuanLyKeyAutoTienDienBank.csproj", "{D40EE754-926F-497E-98BB-67061D2FB414}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{4A8EE734-7E7B-4775-B67E-71FBE31696E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{F72328A8-4202-446F-B66E-D3F402A11769}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F72328A8-4202-446F-B66E-D3F402A11769}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F72328A8-4202-446F-B66E-D3F402A11769}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D40EE754-926F-497E-98BB-67061D2FB414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D40EE754-926F-497E-98BB-67061D2FB414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D40EE754-926F-497E-98BB-67061D2FB414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D40EE754-926F-497E-98BB-67061D2FB414}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A8EE734-7E7B-4775-B67E-71FBE31696E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A8EE734-7E7B-4775-B67E-71FBE31696E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A8EE734-7E7B-4775-B67E-71FBE31696E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A8EE734-7E7B-4775-B67E-71FBE31696E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
