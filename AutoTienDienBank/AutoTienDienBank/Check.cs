@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoTienDien
+namespace AutoTienDienBank
 {
     public static class Check
     {
-        public static void CheckTime()
+        public static void CheckDevice(string device)
         {
-            if (DateTime.Now > new DateTime(2023, 05, 21))
+            if (device != "R58NC0PXPTZ")
             {
                 if (System.Windows.Forms.Application.MessageLoop)
                 {

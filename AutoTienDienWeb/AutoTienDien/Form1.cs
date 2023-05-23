@@ -291,7 +291,7 @@ namespace AutoTienDien
                             else
                             {
                                 string errorCode = myProxy.errorCode;
-                                AddLog($"Key {m_listKeyProxy[stt]} lỗi tạo proxy, đang chờ lấy proxy mới.");
+                                AddLog($"Key {m_listKeyProxy[stt]} lỗi tạo proxy, đang chờ lấy proxy mới. Có thể do key hết hạn hoặc gọi api quá nhanh, vui lòng đợi hoặc check lại.");
                             }
                             Thread.Sleep(10000);
                         }
@@ -317,7 +317,7 @@ namespace AutoTienDien
 
                     service.HideCommandPromptWindow = true;
                     ChromeDriver driver = new ChromeDriver(service, options);
-                    driver.Manage().Window.Size = new Size(300, 575);
+                    driver.Manage().Window.Size = new Size(300, 800);
                     driver.Manage().Window.Position = new Point(stt * 290, 0);
 
 
@@ -352,7 +352,7 @@ namespace AutoTienDien
                                         else
                                         {
                                             string errorCode = myProxy.errorCode;
-                                            AddLog($"Mã {data.Ma} lỗi tạo proxy, đang chờ lấy proxy mới.");
+                                            AddLog($"Key {m_listKeyProxy[stt]} lỗi tạo proxy, đang chờ lấy proxy mới. Có thể do key hết hạn hoặc gọi api quá nhanh, vui lòng đợi hoặc check lại.");
                                         }
                                         Thread.Sleep(10000);
                                     }
@@ -378,7 +378,7 @@ namespace AutoTienDien
 
                                 service.HideCommandPromptWindow = true;
                                 driver = new ChromeDriver(service, options);
-                                driver.Manage().Window.Size = new Size(300, 575);
+                                driver.Manage().Window.Size = new Size(300, 800);
                                 driver.Manage().Window.Position = new Point(stt * 290, 0);
                             }
 
@@ -443,14 +443,14 @@ namespace AutoTienDien
 
                             while (true)
                             {
-                                if (url != driver.Url)
-                                {
-                                    Thread.Sleep(2000);
-                                    break;
-                                }    
-                                Thread.Sleep(2000);
                                 Stop();
-                            }    
+                                Thread.Sleep(2000);
+                                if (driver.PageSource.ToLower().Contains("giao dịch thành công"))
+                                {
+                                    driver.Navigate().GoToUrl("https://www.vban.vn/dich-vu/thanh-toan-hoa-don-tien-dien.aspx");
+                                    break;
+                                }
+                            }
                         }
                         catch (Exception ex)
                         {
