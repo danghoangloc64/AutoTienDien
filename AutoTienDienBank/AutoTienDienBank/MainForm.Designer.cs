@@ -47,6 +47,11 @@ namespace AutoTienDienBank
             this.btnDung = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtMa = new System.Windows.Forms.TextBox();
+            this.cbbModel = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cbbThe = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSelectExcel
@@ -54,7 +59,7 @@ namespace AutoTienDienBank
             this.btnSelectExcel.Location = new System.Drawing.Point(454, 11);
             this.btnSelectExcel.Name = "btnSelectExcel";
             this.btnSelectExcel.Size = new System.Drawing.Size(83, 23);
-            this.btnSelectExcel.TabIndex = 16;
+            this.btnSelectExcel.TabIndex = 1;
             this.btnSelectExcel.Text = "Chọn";
             this.btnSelectExcel.UseVisualStyleBackColor = true;
             this.btnSelectExcel.Click += new System.EventHandler(this.btnSelectExcel_Click);
@@ -65,7 +70,7 @@ namespace AutoTienDienBank
             this.txtExcel.Name = "txtExcel";
             this.txtExcel.ReadOnly = true;
             this.txtExcel.Size = new System.Drawing.Size(251, 20);
-            this.txtExcel.TabIndex = 15;
+            this.txtExcel.TabIndex = 0;
             // 
             // label5
             // 
@@ -90,7 +95,7 @@ namespace AutoTienDienBank
             this.txtMaPin1.Location = new System.Drawing.Point(197, 39);
             this.txtMaPin1.Name = "txtMaPin1";
             this.txtMaPin1.Size = new System.Drawing.Size(46, 20);
-            this.txtMaPin1.TabIndex = 27;
+            this.txtMaPin1.TabIndex = 2;
             this.txtMaPin1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtMaPin2
@@ -98,7 +103,7 @@ namespace AutoTienDienBank
             this.txtMaPin2.Location = new System.Drawing.Point(249, 39);
             this.txtMaPin2.Name = "txtMaPin2";
             this.txtMaPin2.Size = new System.Drawing.Size(46, 20);
-            this.txtMaPin2.TabIndex = 27;
+            this.txtMaPin2.TabIndex = 3;
             this.txtMaPin2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtMaPin3
@@ -106,7 +111,7 @@ namespace AutoTienDienBank
             this.txtMaPin3.Location = new System.Drawing.Point(301, 39);
             this.txtMaPin3.Name = "txtMaPin3";
             this.txtMaPin3.Size = new System.Drawing.Size(46, 20);
-            this.txtMaPin3.TabIndex = 27;
+            this.txtMaPin3.TabIndex = 4;
             this.txtMaPin3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtMaPin4
@@ -114,7 +119,7 @@ namespace AutoTienDienBank
             this.txtMaPin4.Location = new System.Drawing.Point(353, 39);
             this.txtMaPin4.Name = "txtMaPin4";
             this.txtMaPin4.Size = new System.Drawing.Size(46, 20);
-            this.txtMaPin4.TabIndex = 27;
+            this.txtMaPin4.TabIndex = 5;
             this.txtMaPin4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
@@ -131,7 +136,7 @@ namespace AutoTienDienBank
             this.txtSleep.Location = new System.Drawing.Point(197, 65);
             this.txtSleep.Name = "txtSleep";
             this.txtSleep.Size = new System.Drawing.Size(98, 20);
-            this.txtSleep.TabIndex = 28;
+            this.txtSleep.TabIndex = 6;
             this.txtSleep.Text = "70";
             this.txtSleep.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -156,14 +161,13 @@ namespace AutoTienDienBank
             // radioButtonVIB
             // 
             this.radioButtonVIB.AutoSize = true;
-            this.radioButtonVIB.Checked = true;
             this.radioButtonVIB.Location = new System.Drawing.Point(197, 91);
             this.radioButtonVIB.Name = "radioButtonVIB";
             this.radioButtonVIB.Size = new System.Drawing.Size(42, 17);
-            this.radioButtonVIB.TabIndex = 30;
-            this.radioButtonVIB.TabStop = true;
+            this.radioButtonVIB.TabIndex = 7;
             this.radioButtonVIB.Text = "VIB";
             this.radioButtonVIB.UseVisualStyleBackColor = true;
+            this.radioButtonVIB.CheckedChanged += new System.EventHandler(this.radioButtonVIB_CheckedChanged);
             // 
             // radioButtonVPB
             // 
@@ -171,26 +175,27 @@ namespace AutoTienDienBank
             this.radioButtonVPB.Location = new System.Drawing.Point(245, 91);
             this.radioButtonVPB.Name = "radioButtonVPB";
             this.radioButtonVPB.Size = new System.Drawing.Size(46, 17);
-            this.radioButtonVPB.TabIndex = 30;
+            this.radioButtonVPB.TabIndex = 8;
             this.radioButtonVPB.Text = "VPB";
             this.radioButtonVPB.UseVisualStyleBackColor = true;
+            this.radioButtonVPB.CheckedChanged += new System.EventHandler(this.radioButtonVPB_CheckedChanged);
             // 
             // btnChay
             // 
-            this.btnChay.Location = new System.Drawing.Point(12, 114);
+            this.btnChay.Location = new System.Drawing.Point(12, 243);
             this.btnChay.Name = "btnChay";
             this.btnChay.Size = new System.Drawing.Size(525, 23);
-            this.btnChay.TabIndex = 31;
+            this.btnChay.TabIndex = 11;
             this.btnChay.Text = "Chạy";
             this.btnChay.UseVisualStyleBackColor = true;
             this.btnChay.Click += new System.EventHandler(this.btnChay_Click);
             // 
             // btnDung
             // 
-            this.btnDung.Location = new System.Drawing.Point(12, 143);
+            this.btnDung.Location = new System.Drawing.Point(12, 272);
             this.btnDung.Name = "btnDung";
             this.btnDung.Size = new System.Drawing.Size(525, 23);
-            this.btnDung.TabIndex = 31;
+            this.btnDung.TabIndex = 12;
             this.btnDung.Text = "Dừng";
             this.btnDung.UseVisualStyleBackColor = true;
             this.btnDung.Click += new System.EventHandler(this.btnDung_Click);
@@ -198,7 +203,7 @@ namespace AutoTienDienBank
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 179);
+            this.label6.Location = new System.Drawing.Point(12, 308);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(25, 13);
             this.label6.TabIndex = 32;
@@ -206,23 +211,89 @@ namespace AutoTienDienBank
             // 
             // txtMa
             // 
-            this.txtMa.Location = new System.Drawing.Point(46, 175);
+            this.txtMa.Location = new System.Drawing.Point(46, 304);
             this.txtMa.Name = "txtMa";
             this.txtMa.ReadOnly = true;
             this.txtMa.Size = new System.Drawing.Size(491, 20);
-            this.txtMa.TabIndex = 33;
+            this.txtMa.TabIndex = 13;
+            // 
+            // cbbModel
+            // 
+            this.cbbModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbModel.FormattingEnabled = true;
+            this.cbbModel.Items.AddRange(new object[] {
+            "Samsung Galaxy A51",
+            "Samsung Galaxy Note 10 Lite"});
+            this.cbbModel.Location = new System.Drawing.Point(197, 114);
+            this.cbbModel.Name = "cbbModel";
+            this.cbbModel.Size = new System.Drawing.Size(251, 21);
+            this.cbbModel.TabIndex = 9;
+            this.cbbModel.SelectedIndexChanged += new System.EventHandler(this.cbbModel_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 118);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(85, 13);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "Chọn điện thoại:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 145);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(80, 13);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "Chọn hàng thẻ:";
+            // 
+            // cbbThe
+            // 
+            this.cbbThe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbThe.FormattingEnabled = true;
+            this.cbbThe.Items.AddRange(new object[] {
+            "9",
+            "8",
+            "7",
+            "6",
+            "5",
+            "4",
+            "3",
+            "2",
+            "1"});
+            this.cbbThe.Location = new System.Drawing.Point(197, 141);
+            this.cbbThe.Name = "cbbThe";
+            this.cbbThe.Size = new System.Drawing.Size(46, 21);
+            this.cbbThe.TabIndex = 10;
+            this.cbbThe.SelectedIndexChanged += new System.EventHandler(this.cbbThe_SelectedIndexChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(323, 184);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 33;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 207);
+            this.ClientSize = new System.Drawing.Size(551, 336);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cbbThe);
+            this.Controls.Add(this.cbbModel);
             this.Controls.Add(this.txtMa);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnDung);
             this.Controls.Add(this.btnChay);
             this.Controls.Add(this.radioButtonVPB);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.radioButtonVIB);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtSleep);
             this.Controls.Add(this.txtMaPin4);
@@ -266,6 +337,11 @@ namespace AutoTienDienBank
         private System.Windows.Forms.Button btnDung;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtMa;
+        private System.Windows.Forms.ComboBox cbbModel;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cbbThe;
+        private System.Windows.Forms.Button button1;
     }
 }
 

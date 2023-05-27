@@ -10,7 +10,7 @@ namespace AutoTienDienBank
     {
         public static void CheckDevice(string device)
         {
-            if (device != "R58NC0PXPTZ")
+            if (device != "R58NC0PXPTZ" && device != "RR8N400N23N")
             {
                 if (System.Windows.Forms.Application.MessageLoop)
                 {
