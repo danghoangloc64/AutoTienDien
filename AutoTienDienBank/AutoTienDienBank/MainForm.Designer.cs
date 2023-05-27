@@ -51,7 +51,6 @@ namespace AutoTienDienBank
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cbbThe = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSelectExcel
@@ -223,7 +222,8 @@ namespace AutoTienDienBank
             this.cbbModel.FormattingEnabled = true;
             this.cbbModel.Items.AddRange(new object[] {
             "Samsung Galaxy A51",
-            "Samsung Galaxy Note 10 Lite"});
+            "Samsung Galaxy Note 10 Lite",
+            "Samsung Galaxy Note 20 Ultra 5G"});
             this.cbbModel.Location = new System.Drawing.Point(197, 114);
             this.cbbModel.Name = "cbbModel";
             this.cbbModel.Size = new System.Drawing.Size(251, 21);
@@ -268,22 +268,11 @@ namespace AutoTienDienBank
             this.cbbThe.TabIndex = 10;
             this.cbbThe.SelectedIndexChanged += new System.EventHandler(this.cbbThe_SelectedIndexChanged);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(323, 184);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 33;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(551, 336);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.cbbThe);
             this.Controls.Add(this.cbbModel);
             this.Controls.Add(this.txtMa);
@@ -341,7 +330,6 @@ namespace AutoTienDienBank
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbbThe;
-        private System.Windows.Forms.Button button1;
     }
 }
 
