@@ -181,6 +181,49 @@ namespace AutoTienDienBank
             }
         }
 
+        private void NhapOPTVPB_Note10Lite(string soPin)
+        {
+            if (soPin == "1")
+            {
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 19.1, 67.3);
+            }
+            if (soPin == "2")
+            {
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 48.5, 66.7);
+            }
+            if (soPin == "3")
+            {
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 83.5, 66.2);
+            }
+            if (soPin == "4")
+            {
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 19.9, 74.4);
+            }
+            if (soPin == "5")
+            {
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 50.4, 74.4);
+            }
+            if (soPin == "6")
+            {
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 79.7, 74.4);
+            }
+            if (soPin == "7")
+            {
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 18.8, 82.1);
+            }
+            if (soPin == "8")
+            {
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 48.5, 82.1);
+            }
+            if (soPin == "9")
+            {
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 80.5, 82.4);
+            }
+            if (soPin == "0")
+            {
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 49.2, 90.0);
+            }
+        }
         private List<ExcelDataModel> GetListExcelDataModels()
         {
             List<ExcelDataModel> result = new List<ExcelDataModel>();
@@ -276,7 +319,14 @@ namespace AutoTienDienBank
                 }
                 else if (radioButtonVPB.Checked)
                 {
-                    RunVPB_A51();
+                    if (cbbModel.SelectedIndex == 0)
+                    {
+                        RunVPB_A51();
+                    }
+                    else if (cbbModel.SelectedIndex == 1)
+                    {
+                        RunVPB_Note10Lite();
+                    }
                 }
             });
         }
@@ -368,6 +418,116 @@ namespace AutoTienDienBank
                     if (!m_bRunning) break;
                     // Nhấn trang chủ
                     KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 7.5, 91.0);
+                    if (!m_bRunning) break;
+                    Thread.Sleep(5000);
+                    if (!m_bRunning) break;
+                    iSleep += 10000;
+                }
+            }
+        }
+
+        private void RunVPB_Note10Lite()
+        {
+            foreach (var data in m_listExcelDataModels)
+            {
+                // Nhấn điện
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 10.5, 30.3);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                //// Nhấn điện lực toàn quốc
+                //KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 36.5, 35.2);
+                //if (!m_bRunning) break;
+                //Thread.Sleep(2000);
+                //if (!m_bRunning) break;
+                // Nhấn nhà cung cấp
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 41.0, 32.3);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhấn điện lực toàn quốc
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 25.2, 88.2);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhấn nguồn tiền
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 34.9, 18.1);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhấn chọn thẻ tín dụng
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 48.1, 53.8);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhấn chọn textbox mã khách hàng
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 23.3, 40.2);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhập mã khách hàng
+                KAutoHelper.ADBHelper.InputText(m_strDeviceID, data.Ma);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Click ra ngoài
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 48.1, 50.4);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhấn tiếp tục màn hình nhập mã
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 51.5, 91.6);
+                if (!m_bRunning) break;
+                Thread.Sleep(5000);
+                if (!m_bRunning) break;
+                // Tiep tuc xac nhan
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 48.9, 91.6);
+                if (!m_bRunning) break;
+                Thread.Sleep(5000);
+                if (!m_bRunning) break;
+                // Tiep tuc xac nhan
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 48.9, 91.6);
+                if (!m_bRunning) break;
+                Thread.Sleep(5000);
+                if (!m_bRunning) break;
+                // Nhap OTP
+                NhapOPTVPB_Note10Lite(txtMaPin1.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(300);
+                if (!m_bRunning) break;
+                NhapOPTVPB_Note10Lite(txtMaPin2.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(300);
+                if (!m_bRunning) break;
+                NhapOPTVPB_Note10Lite(txtMaPin3.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(300);
+                if (!m_bRunning) break;
+                NhapOPTVPB_Note10Lite(txtMaPin4.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(5000);
+                if (!m_bRunning) break;
+                // Tiep tuc xac nhan
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 48.9, 91.6);
+                if (!m_bRunning) break;
+                Thread.Sleep(10000);
+                if (!m_bRunning) break;
+                // Nhấn quay lại trang chu
+                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 93.3, 6.4);
+                if (!m_bRunning) break;
+                Thread.Sleep(5000);
+                if (!m_bRunning) break;
+
+                int iSleep = 0;
+                while (iSleep < m_iSleepTime)
+                {
+                    // Nhấn điện
+                    KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 9.4, 29.7);
+                    if (!m_bRunning) break;
+                    Thread.Sleep(5000);
+                    if (!m_bRunning) break;
+                    // Nhấn trang chủ
+                    KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 4.5, 6.9);
                     if (!m_bRunning) break;
                     Thread.Sleep(5000);
                     if (!m_bRunning) break;
