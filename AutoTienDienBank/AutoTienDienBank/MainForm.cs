@@ -527,13 +527,25 @@ namespace AutoTienDienBank
                 // Nhấn điện
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)89.0, (int)716.4);
                 if (!m_bRunning) break;
+                Thread.Sleep(10000);
+                if (!m_bRunning) break;
+                // Nhấn điện lực toàn quốc
+                //KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)312.5, (int)888.9);
+                //if (!m_bRunning) break;
+                //Thread.Sleep(2000);
+                //if (!m_bRunning) break;
+
+                // Nhấn nhà cung cấp
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)329.7, (int)763.9);
+                if (!m_bRunning) break;
                 Thread.Sleep(2000);
                 if (!m_bRunning) break;
                 // Nhấn điện lực toàn quốc
-                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)312.5, (int)888.9);
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)312.2, (int)2005.3);
                 if (!m_bRunning) break;
                 Thread.Sleep(2000);
                 if (!m_bRunning) break;
+
                 // Nhấn nguồn tiền
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)300.8, (int)430.1);
                 if (!m_bRunning) break;
@@ -1254,7 +1266,7 @@ namespace AutoTienDienBank
             {
                 if (!m_bRunning) break;
                 // Chọn giao dịch
-                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int) 319.4, (int)2172.5);
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)319.4, (int)2172.5);
                 if (!m_bRunning) break;
                 Thread.Sleep(2000);
                 if (!m_bRunning) break;
