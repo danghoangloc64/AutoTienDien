@@ -223,7 +223,8 @@ namespace AutoTienDienBank
             this.cbbModel.Items.AddRange(new object[] {
             "Samsung Galaxy A51",
             "Samsung Galaxy Note 10 Lite",
-            "Samsung Galaxy Note 20 Ultra 5G"});
+            "Samsung Galaxy Note 20 Ultra 5G",
+            "Samsung Galaxy S21 5G"});
             this.cbbModel.Location = new System.Drawing.Point(197, 114);
             this.cbbModel.Name = "cbbModel";
             this.cbbModel.Size = new System.Drawing.Size(251, 21);
