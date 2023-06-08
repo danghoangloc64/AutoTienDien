@@ -517,7 +517,139 @@ namespace AutoTienDienBank
                         RunVPB_S215G();
                     }
                 }
+                else if (radioButtonMSB.Checked)
+                {
+                    if (cbbModel.SelectedIndex == 1)
+                    {
+                        RunMSB_Note10Lite();
+                    }
+                }
             });
+        }
+
+        private void RunMSB_Note10Lite()
+        {
+            foreach (var data in m_listExcelDataModels)
+            {
+                // Chọn dịch vụ
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)279.9, (int)352.3);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn điện
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)279.9, (int)551.4);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn tài khoản
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)401.8, (int)551.4);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn thẻ tín dụng
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)190.5, (int)1608.0);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn số thẻ tín dụng
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)344.9, (int)1465.7);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Click vào textbox mã khách hàng
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)344.9, (int)1047.2);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhập mã khách hàng
+                KAutoHelper.ADBHelper.InputText(m_strDeviceID, data.Ma);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Click ra ngoài để ẩn bàn phím
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)446.5, (int)1376.3);
+                if (!m_bRunning) break;
+                Thread.Sleep(10000);
+                if (!m_bRunning) break;
+                // Nhấn tiếp tục
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)544.1, (int)2181.0);
+                if (!m_bRunning) break;
+                Thread.Sleep(5000);
+                if (!m_bRunning) break;
+                // Nhập mã pin 1
+                NhapOPTMSB_Note10Lite(txtMaPin1.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(500);
+                if (!m_bRunning) break;
+                // Nhập mã pin 2
+                NhapOPTMSB_Note10Lite(txtMaPin2.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(500);
+                if (!m_bRunning) break;
+                // Nhập mã pin 3
+                NhapOPTMSB_Note10Lite(txtMaPin3.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(500);
+                if (!m_bRunning) break;
+                // Nhập mã pin 4
+                NhapOPTMSB_Note10Lite(txtMaPin4.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(10000);
+                if (!m_bRunning) break;
+                // Chọn thanh toán khác
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)519.7, (int)2148.5);
+
+                int iSleep = 0;
+                while (iSleep < m_iSleepTime)
+                {
+                    Thread.Sleep(5000);
+                    iSleep += 5000;
+                }
+            }
+        }
+
+        private void NhapOPTMSB_Note10Lite(string soPin)
+        {
+            if (soPin == "1")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)255.5, (int)738.3);
+            }
+            if (soPin == "2")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)540.0, (int)750.5);
+            }
+            if (soPin == "3")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)800.1, (int)758.6);
+            }
+            if (soPin == "4")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)251.5, (int)998.4);
+            }
+            if (soPin == "5")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)544.1, (int)990.3);
+            }
+            if (soPin == "6")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)812.3, (int)986.2);
+            }
+            if (soPin == "7")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)267.7, (int)1226.0);
+            }
+            if (soPin == "8")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)531.9, (int)1234.1);
+            }
+            if (soPin == "9")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)796.0, (int)1238.2);
+            }
+            if (soPin == "0")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)544.1, (int)1465.7);
+            }
         }
 
         private void RunVPB_Note20Ultra5G()
@@ -1382,6 +1514,7 @@ namespace AutoTienDienBank
             txtMa.Text = CommonMethod.GetSerialNumber();
             radioButtonVIB.Checked = Properties.Settings.Default.VIB;
             radioButtonVPB.Checked = Properties.Settings.Default.VPB;
+            radioButtonMSB.Checked = Properties.Settings.Default.MSB;
             cbbModel.SelectedIndex = Properties.Settings.Default.ModelDienThoai;
             cbbThe.SelectedIndex = Properties.Settings.Default.HangThe;
         }
@@ -1390,13 +1523,15 @@ namespace AutoTienDienBank
         {
             Properties.Settings.Default.VIB = true;
             Properties.Settings.Default.VPB = false;
+            Properties.Settings.Default.MSB = false;
             Properties.Settings.Default.Save();
         }
 
         private void radioButtonVPB_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.VIB = false;
             Properties.Settings.Default.VPB = true;
+            Properties.Settings.Default.VIB = false;
+            Properties.Settings.Default.MSB = false;
             Properties.Settings.Default.Save();
         }
 
@@ -1445,6 +1580,14 @@ namespace AutoTienDienBank
                 m_strDeviceID = string.Empty;
             }
             KAutoHelper.ADBHelper.Swipe(m_strDeviceID, 540, 1620, 540, 500);
+        }
+
+        private void radioButtonMSB_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.MSB = true;
+            Properties.Settings.Default.VPB = false;
+            Properties.Settings.Default.VIB = false;
+            Properties.Settings.Default.Save();
         }
     }
 }

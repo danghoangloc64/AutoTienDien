@@ -70,5 +70,17 @@ namespace AutoTienDienBank.Properties {
                 this["HangThe"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool MSB {
+            get {
+                return ((bool)(this["MSB"]));
+            }
+            set {
+                this["MSB"] = value;
+            }
+        }
     }
 }

@@ -51,6 +51,7 @@ namespace AutoTienDienBank
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cbbThe = new System.Windows.Forms.ComboBox();
+            this.radioButtonMSB = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // btnSelectExcel
@@ -269,6 +270,17 @@ namespace AutoTienDienBank
             this.cbbThe.TabIndex = 10;
             this.cbbThe.SelectedIndexChanged += new System.EventHandler(this.cbbThe_SelectedIndexChanged);
             // 
+            // radioButtonMSB
+            // 
+            this.radioButtonMSB.AutoSize = true;
+            this.radioButtonMSB.Location = new System.Drawing.Point(297, 91);
+            this.radioButtonMSB.Name = "radioButtonMSB";
+            this.radioButtonMSB.Size = new System.Drawing.Size(48, 17);
+            this.radioButtonMSB.TabIndex = 8;
+            this.radioButtonMSB.Text = "MSB";
+            this.radioButtonMSB.UseVisualStyleBackColor = true;
+            this.radioButtonMSB.CheckedChanged += new System.EventHandler(this.radioButtonMSB_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -280,6 +292,7 @@ namespace AutoTienDienBank
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnDung);
             this.Controls.Add(this.btnChay);
+            this.Controls.Add(this.radioButtonMSB);
             this.Controls.Add(this.radioButtonVPB);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.radioButtonVIB);
@@ -331,6 +344,7 @@ namespace AutoTienDienBank
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbbThe;
+        private System.Windows.Forms.RadioButton radioButtonMSB;
     }
 }
 
