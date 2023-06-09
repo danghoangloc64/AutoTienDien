@@ -497,6 +497,10 @@ namespace AutoTienDienBank
                     {
                         RunVIB_S215G();
                     }
+                    else if (cbbModel.SelectedIndex == 4)
+                    {
+                        RunVIB_S23Ultra();
+                    }
                 }
                 else if (radioButtonVPB.Checked)
                 {
@@ -516,6 +520,10 @@ namespace AutoTienDienBank
                     {
                         RunVPB_S215G();
                     }
+                    else if (cbbModel.SelectedIndex == 4)
+                    {
+                        RunVPB_S23Ultra();
+                    }
                 }
                 else if (radioButtonMSB.Checked)
                 {
@@ -523,8 +531,443 @@ namespace AutoTienDienBank
                     {
                         RunMSB_Note10Lite();
                     }
+                    else if (cbbModel.SelectedIndex == 4)
+                    {
+                        RunMSB_S23Ultra();
+                    }
                 }
             });
+        }
+
+        private void RunVPB_S23Ultra()
+        {
+            foreach (var data in m_listExcelDataModels)
+            {
+                // Nhấn điện
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)140.9, (int)800.1);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                //// Nhấn điện lực toàn quốc
+                //KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 36.5, 35.2);
+                //if (!m_bRunning) break;
+                //Thread.Sleep(2000);
+                //if (!m_bRunning) break;
+                // Nhấn nhà cung cấp
+                //KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)325.9, (int)877.9);
+                //if (!m_bRunning) break;
+                //Thread.Sleep(2000);
+                //if (!m_bRunning) break;
+                //// Nhấn điện lực hà nội
+                //KAutoHelper.ADBHelper.Tap(m_strDeviceID,(int) 267.8, (int)1844.1);
+                //if (!m_bRunning) break;
+                //Thread.Sleep(2000);
+                //if (!m_bRunning) break;
+                // Nhấn nguồn tiền
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)303.2, (int)478.9);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhấn chọn thẻ tín dụng
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)423.2, (int)1290.0);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhấn chọn textbox mã khách hàng
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)199.8, (int)1015.5);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhập mã khách hàng
+                KAutoHelper.ADBHelper.InputText(m_strDeviceID, data.Ma);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Click ra ngoài
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)528.0, (int)1099.5);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhấn tiếp tục màn hình nhập mã
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)528.0, (int)2092.2);
+                if (!m_bRunning) break;
+                Thread.Sleep(5000);
+                if (!m_bRunning) break;
+                // Tiep tuc xac nhan
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)516.0, (int)2092.2);
+                if (!m_bRunning) break;
+                Thread.Sleep(5000);
+                if (!m_bRunning) break;
+                // Tiep tuc xac nhan
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)520.0, (int)2096.2);
+                if (!m_bRunning) break;
+                Thread.Sleep(5000);
+                if (!m_bRunning) break;
+                // Nhap OTP
+                NhapOTPVPB_S23Ultra(txtMaPin1.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(300);
+                if (!m_bRunning) break;
+                NhapOTPVPB_S23Ultra(txtMaPin2.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(300);
+                if (!m_bRunning) break;
+                NhapOTPVPB_S23Ultra(txtMaPin3.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(300);
+                if (!m_bRunning) break;
+                NhapOTPVPB_S23Ultra(txtMaPin4.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(5000);
+                if (!m_bRunning) break;
+                // Tiep tuc xac nhan
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)520.0, (int)2096.2);
+                if (!m_bRunning) break;
+                Thread.Sleep(12000);
+                if (!m_bRunning) break;
+                // Nhấn quay lại trang chu
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)1000.3, (int)166.8);
+                if (!m_bRunning) break;
+                Thread.Sleep(5000);
+                if (!m_bRunning) break;
+
+                int iSleep = 0;
+                while (iSleep < m_iSleepTime)
+                {
+                    // Nhấn điện
+                    KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)87.7, (int)739.3);
+                    if (!m_bRunning) break;
+                    Thread.Sleep(5000);
+                    if (!m_bRunning) break;
+                    // Nhấn trang chủ
+                    KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)55.6, (int)154.8);
+                    if (!m_bRunning) break;
+                    Thread.Sleep(5000);
+                    if (!m_bRunning) break;
+                    iSleep += 10000;
+                }
+            }
+        }
+
+        private void NhapOTPVPB_S23Ultra(string soPin)
+        {
+            if (soPin == "1")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)215.8, (int)1479.8);
+            }
+            if (soPin == "2")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)540.0, (int)1463.8);
+            }
+            if (soPin == "3")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)868.2, (int)1483.8);
+            }
+            if (soPin == "4")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)223.8, (int)1683.9);
+            }
+            if (soPin == "5")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)528.0, (int)1687.9);
+            }
+            if (soPin == "6")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)872.2, (int)1683.9);
+            }
+            if (soPin == "7")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)219.8, (int)1896.1);
+            }
+            if (soPin == "8")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)524.0, (int)1876.1);
+            }
+            if (soPin == "9")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)872.2, (int)1852.1);
+            }
+            if (soPin == "0")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)540.0, (int)2048.2);
+            }
+        }
+
+        private void RunVIB_S23Ultra()
+        {
+            foreach (var data in m_listExcelDataModels)
+            {
+                if (!m_bRunning) break;
+                // Chọn giao dịch
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)319.4, (int)2172.5);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn thanh toán
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)338.8, (int)903.9);
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn điện
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)286.9, (int)598.9);
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhập mã
+                KAutoHelper.ADBHelper.InputText(m_strDeviceID, data.Ma);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhấn ngoài để ẩn bàn phím
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)471.9, (int)910.4);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhấn tiếp tục
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)514.0, (int)2133.5);
+                if (!m_bRunning) break;
+                Thread.Sleep(5000);
+                if (!m_bRunning) break;
+                // Swipe				
+                KAutoHelper.ADBHelper.Swipe(m_strDeviceID, 540, 1620, 540, 500);
+                if (!m_bRunning) break;
+                Thread.Sleep(5000);
+                if (!m_bRunning) break;
+                // Nhấn từ
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)475.1, (int)1718.3);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn thẻ tín dụng
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)473.3, 2100 - 200 * m_iIndexThe);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhấn tiếp tục màn hình chọn thẻ tính dụng
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)517.3, (int)2130.3);
+                if (!m_bRunning) break;
+                Thread.Sleep(3000);
+                if (!m_bRunning) break;
+                // Nhấn tiếp tục màn hình xác nhận
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)517.3, (int)2130.3);
+                if (!m_bRunning) break;
+                Thread.Sleep(3000);
+                if (!m_bRunning) break;
+                // Nhập mã pin
+                NhapOTPVIB_S23Ultra(txtMaPin1.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(300);
+                if (!m_bRunning) break;
+                NhapOTPVIB_S23Ultra(txtMaPin2.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(300);
+                if (!m_bRunning) break;
+                NhapOTPVIB_S23Ultra(txtMaPin3.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(300);
+                if (!m_bRunning) break;
+                NhapOTPVIB_S23Ultra(txtMaPin4.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(300);
+                if (!m_bRunning) break;
+                // Nhấn tiếp tục lúc nhập mã pin xong
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)528.0, (int)1167.6);
+                if (!m_bRunning) break;
+                Thread.Sleep(5000);
+                if (!m_bRunning) break;
+                // Nhấn x để quay lại ban đầu
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)976.3, (int)150.8);
+                if (!m_bRunning) break;
+                Thread.Sleep(3000);
+                if (!m_bRunning) break;
+
+                int iSleep = 0;
+
+                while (iSleep < m_iSleepTime)
+                {
+                    if (!m_bRunning) break;
+                    // Chọn tài khoản
+                    KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)79.3, (int)2185.5);
+                    if (!m_bRunning) break;
+                    Thread.Sleep(5000);
+                    if (!m_bRunning) break;
+                    // Chọn giao dịch
+                    KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)325.9, (int)2156.3);
+                    if (!m_bRunning) break;
+                    Thread.Sleep(5000);
+                    if (!m_bRunning) break;
+                    // Chọn tài khoản
+                    KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)79.3, (int)2185.5);
+                    if (!m_bRunning) break;
+                    Thread.Sleep(5000);
+                    if (!m_bRunning) break;
+                    iSleep += 15000;
+                    if (!m_bRunning) break;
+                }
+            }
+        }
+
+        private void NhapOTPVIB_S23Ultra(string soPin)
+        {
+            if (soPin == "1")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)199.8, (int)1551.8);
+            }
+            if (soPin == "2")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)528.0, (int)1563.9);
+            }
+            if (soPin == "3")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)896.3, (int)1547.8);
+            }
+            if (soPin == "4")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)203.8, (int)1683.9);
+            }
+            if (soPin == "5")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)524.0, (int)1691.9);
+            }
+            if (soPin == "6")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)856.2, (int)1704.0);
+            }
+            if (soPin == "7")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)219.8, (int)1884.1);
+            }
+            if (soPin == "8")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)524.0, (int)1860.1);
+            }
+            if (soPin == "9")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)840.2, (int)1856.1);
+            }
+            if (soPin == "0")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)548.0, (int)2040.2);
+            }
+        }
+
+        private void RunMSB_S23Ultra()
+        {
+            foreach (var data in m_listExcelDataModels)
+            {
+                // Chọn dịch vụ
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)247.8, (int)347.0);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn điện
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)267.8, (int)531.1);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn tài khoản
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)263.8, (int)583.1);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn thẻ tín dụng
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)251.8, (int)1447.8);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn số thẻ tín dụng
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)347.9, (int)1303.7);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Click vào textbox mã khách hàng
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)307.8, (int)1035.5);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhập mã khách hàng
+                KAutoHelper.ADBHelper.InputText(m_strDeviceID, data.Ma);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Click ra ngoài để ẩn bàn phím
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)976.3, (int)2096.2);
+                if (!m_bRunning) break;
+                Thread.Sleep(10000);
+                if (!m_bRunning) break;
+                // Nhấn tiếp tục
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)512.0, (int)2084.2);
+                if (!m_bRunning) break;
+                Thread.Sleep(5000);
+                if (!m_bRunning) break;
+                // Nhập mã pin
+                NhapOPTMSB_S23Ultra(txtMaPin1.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(500);
+                if (!m_bRunning) break;
+                NhapOPTMSB_S23Ultra(txtMaPin2.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(500);
+                if (!m_bRunning) break;
+                NhapOPTMSB_S23Ultra(txtMaPin3.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(500);
+                if (!m_bRunning) break;
+                NhapOPTMSB_S23Ultra(txtMaPin4.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(10000);
+                if (!m_bRunning) break;
+                // Chọn thanh toán khác
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)528.0, (int)2084.2);
+                int iSleep = 0;
+                while (iSleep <= m_iSleepTime)
+                {
+                    Thread.Sleep(1000);
+                    iSleep += 1000;
+                }
+            }
+        }
+
+        private void NhapOPTMSB_S23Ultra(string soPin)
+        {
+            if (soPin == "1")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)271.8, (int)739.3);
+            }
+            if (soPin == "2")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)544.0, (int)723.2);
+            }
+            if (soPin == "3")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)812.2, (int)759.3);
+            }
+            if (soPin == "4")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)263.8, (int)963.4);
+            }
+            if (soPin == "5")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)548.0, (int)991.4);
+            }
+            if (soPin == "6")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)820.2, (int)975.4);
+            }
+            if (soPin == "7")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)251.8, (int)1219.6);
+            }
+            if (soPin == "8")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)528.0, (int)1207.6);
+            }
+            if (soPin == "9")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)780.2, (int)1219.6);
+            }
+            if (soPin == "0")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)544.0, (int)1431.8);
+            }
         }
 
         private void RunMSB_Note10Lite()

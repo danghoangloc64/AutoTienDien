@@ -225,7 +225,8 @@ namespace AutoTienDienBank
             "Samsung Galaxy A51",
             "Samsung Galaxy Note 10 Lite",
             "Samsung Galaxy Note 20 Ultra 5G",
-            "Samsung Galaxy S21 5G"});
+            "Samsung Galaxy S21 5G",
+            "Samsung Galaxy S23 Ultra"});
             this.cbbModel.Location = new System.Drawing.Point(197, 114);
             this.cbbModel.Name = "cbbModel";
             this.cbbModel.Size = new System.Drawing.Size(251, 21);
