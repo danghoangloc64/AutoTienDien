@@ -270,6 +270,8 @@ namespace AutoQuetQR
 
         }
 
+        private object lockobject = new object();
+
         private void Run(List<ExcelDataModel> excelDataModels, int sleep, string sdt, string profile, int stt, string mien)
         {
             new Thread(async () =>
@@ -305,6 +307,7 @@ namespace AutoQuetQR
                     }
 
                     ChromeOptions options = new ChromeOptions();
+
                     options.AddArgument(@"user-data-dir=" + Path.Combine(AppDomain.CurrentDomain.BaseDirectory, profile));
                     options.AddArgument("--app=https://www.vban.vn/dich-vu/thanh-toan-hoa-don-tien-dien.aspx");
                     options.BinaryLocation = Environment.CurrentDirectory + "\\GoogleChromePortable\\App\\Chrome-bin\\chrome.exe";
@@ -390,7 +393,10 @@ namespace AutoQuetQR
                             }
 
                             IJavaScriptExecutor executorUseData = driver;
-                            Stop();
+                            if (m_bIsRunning == false)
+                            {
+                                return;
+                            }
                             driver.Navigate().GoToUrl("https://www.vban.vn/dich-vu/thanh-toan-hoa-don-tien-dien.aspx");
 
 
@@ -402,77 +408,166 @@ namespace AutoQuetQR
 
                             AddLog($"Mã {data.Ma} đang giải capcha.");
                             var reCaptchaV3 = await captcha.SolveReCaptchaV2(dataSite, "https://www.vban.vn/dich-vu/thanh-toan-hoa-don-tien-dien.aspx");
-
-                            Stop();
+                            if (m_bIsRunning == false)
+                            {
+                                return;
+                            }
+                            if (m_bIsRunning == false)
+                            {
+                                return;
+                            }
+                            if (m_bIsRunning == false)
+                            {
+                                return;
+                            }
                             var txtMa = driver.FindElement(By.XPath("//input[@id='billcode']"));
                             txtMa.Clear();
                             txtMa.SendKeys(data.Ma);
-
+                            if (m_bIsRunning == false)
+                            {
+                                return;
+                            }
                             var txtSDT = driver.FindElement(By.XPath("//input[@id='cusphone']"));
                             txtSDT.Clear();
                             txtSDT.SendKeys(sdt);
-
+                            if (m_bIsRunning == false)
+                            {
+                                return;
+                            }
 
                             var txtKeyRecaptcha = driver.FindElement(By.XPath("//textarea[@id='g-recaptcha-response']"));
                             executorUseData.ExecuteScript("arguments[0].setAttribute('style','type: text; visibility:visible;');", txtKeyRecaptcha);
                             txtKeyRecaptcha.SendKeys(reCaptchaV3.Response);
 
-
+                            if (m_bIsRunning == false)
+                            {
+                                return;
+                            }
                             var btnNext = driver.FindElement(By.XPath("//button[@ng-click='nextToPay()']"));
                             executorUseData.ExecuteScript("arguments[0].click()", btnNext);
-
+                            if (m_bIsRunning == false)
+                            {
+                                return;
+                            }
                             Thread.Sleep(5000);
 
-                            var checkTien = int.Parse(driver.FindElement(By.XPath("//span[@class='lightred ng-binding']")).Text.Replace(".", "").Replace("VND", "").Trim());
-                            if (checkTien != data.Tien)
+
+
+                            if (driver.PageSource.ToLower().Contains("không nợ cước"))
                             {
-                                AddLog($"Mã {data.Ma} có tiền không khớp.");
+                                AddLog($"Mã {data.Ma} không nợ cước.");
                                 continue;
                             }
 
+                            if (driver.PageSource.ToLower().Contains("không tồn tại"))
+                            {
+                                AddLog($"Mã {data.Ma} không tồn tại hoặc chưa được hỗ trợ.");
+                                continue;
+                            }
+                            //var checkTien = int.Parse(driver.FindElement(By.XPath("//span[@class='lightred ng-binding']")).Text.Replace(".", "").Replace("VND", "").Trim());
+                            //if (checkTien != data.Tien)
+                            //{
+                            //    AddLog($"Mã {data.Ma} có tiền không khớp.");
+                            //    continue;
+                            //}
+                            if (m_bIsRunning == false)
+                            {
+                                return;
+                            }
                             var btnVN = driver.FindElement(By.XPath("//button[@ng-click='ChoosenVnpayQrTab()']"));
                             executorUseData.ExecuteScript("arguments[0].click()", btnVN);
 
                             Thread.Sleep(5000);
 
-
+                            if (m_bIsRunning == false)
+                            {
+                                return;
+                            }
                             var js = String.Format("window.scrollTo({0}, {1})", 0, 200);
                             executorUseData.ExecuteScript(js);
 
-
+                            if (m_bIsRunning == false)
+                            {
+                                return;
+                            }
                             //var element = driver.FindElement(By.XPath("//div[@class='qr qr-size-default']"));
                             //Actions actions = new Actions(driver);
                             //actions.MoveToElement(element);
                             //actions.Perform();
-                            Thread.Sleep(5000);
+                            Thread.Sleep(2000);
 
-                            while (File.Exists("qr.png"))
+
+                            lock (lockobject)
                             {
-                                Thread.Sleep(1000);
-                            }
-
-                            Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
-                            ss.SaveAsFile("qr.png", ScreenshotImageFormat.Png);
-                            Thread.Sleep(1000);
-                            CopyAndRefreshADB();
-                            RunAutoPhone();
-                            string url = driver.Url;
-
-                            while (true)
-                            {
-                                Stop();
-                                Thread.Sleep(1000);
-                                if (driver.PageSource.ToLower().Contains("giao dịch thành công"))
+                                if (!m_bIsRunTay)
                                 {
-                                    File.Delete("qr.png");
-                                    driver.Navigate().GoToUrl("https://www.vban.vn/dich-vu/thanh-toan-hoa-don-tien-dien.aspx");
-                                    break;
+                                    Random rnd = new Random();
+                                    while (File.Exists("qr.png"))
+                                    {
+                                        if (m_bIsRunning == false)
+                                        {
+                                            return;
+                                        }
+                                        Thread.Sleep(rnd.Next(2000, 5000));
+                                    }
+                                    if (m_bIsRunning == false)
+                                    {
+                                        return;
+                                    }
+                                    Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
+                                    if (m_bIsRunning == false)
+                                    {
+                                        return;
+                                    }
+
+
+                                    ss.SaveAsFile("qr.png", ScreenshotImageFormat.Png);
+
+                                    if (m_bIsRunning == false)
+                                    {
+                                        return;
+                                    }
+                                    Thread.Sleep(2000);
+                                    if (m_bIsRunning == false)
+                                    {
+                                        return;
+                                    }
+                                    CopyAndRefreshADB();
+                                    if (m_bIsRunning == false)
+                                    {
+                                        return;
+                                    }
+                                    AddLog($"Mã {data.Ma} đang quét QR.");
+                                    if (m_bIsRunning == false)
+                                    {
+                                        return;
+                                    }
+                                    RunAutoPhone();
+                                    if (m_bIsRunning == false)
+                                    {
+                                        return;
+                                    }
+                                }
+                                string url = driver.Url;
+
+                                while (true)
+                                {
+                                    if (m_bIsRunning == false)
+                                    {
+                                        return;
+                                    }
+                                    Thread.Sleep(1000);
+                                    if (driver.PageSource.ToLower().Contains("giao dịch thành công"))
+                                    {
+                                        File.Delete("qr.png");
+                                        driver.Navigate().GoToUrl("https://www.vban.vn/dich-vu/thanh-toan-hoa-don-tien-dien.aspx");
+                                        break;
+                                    }
                                 }
                             }
                         }
                         catch (Exception ex)
                         {
-
                         }
                         finally
                         {
@@ -482,13 +577,16 @@ namespace AutoQuetQR
                 }
                 catch (Exception ex)
                 {
-
                 }
             }).Start();
         }
 
         private void RunAutoPhone()
         {
+            if (m_bIsRunning == false)
+            {
+                return;
+            }
             string deviceID = string.Empty;
             var listDevice = KAutoHelper.ADBHelper.GetDevices();
             try
@@ -507,28 +605,61 @@ namespace AutoQuetQR
             {
                 deviceID = string.Empty;
             }
-
+            if (m_bIsRunning == false)
+            {
+                return;
+            }
             if (string.IsNullOrEmpty(deviceID))
             {
                 return;
             }
+            if (m_bIsRunning == false)
+            {
+                return;
+            }
             // Chọn QR Pay
-            KAutoHelper.ADBHelper.Tap(deviceID, (int)820.4, (int) 555.4);
-
+            KAutoHelper.ADBHelper.Tap(deviceID, (int)820.4, (int)555.4);
+            Thread.Sleep(3000);
+            if (m_bIsRunning == false)
+            {
+                return;
+            }
             // Chọn ảnh từ trong máy
             KAutoHelper.ADBHelper.Tap(deviceID, (int)527.8, (int)2124.1);
+            Thread.Sleep(3000);
 
+            if (m_bIsRunning == false)
+            {
+                return;
+            }
             // Chọn ảnh mới nhất
-            KAutoHelper.ADBHelper.Tap(deviceID, (int)162.1, (int)559.5);
+            KAutoHelper.ADBHelper.Tap(deviceID, (int)174.3, (int)1055.3);
+            //KAutoHelper.ADBHelper.Tap(deviceID, (int)162.1, (int)559.5);
+            Thread.Sleep(5000);
 
+            if (m_bIsRunning == false)
+            {
+                return;
+            }
             // Chọn tiếp tục
-            KAutoHelper.ADBHelper.Tap(deviceID, (int)515.6, (int)2172.8);
+            KAutoHelper.ADBHelper.Tap(deviceID, (int)531.9, (int)2156.6);
+            Thread.Sleep(6000);
 
+            if (m_bIsRunning == false)
+            {
+                return;
+            }
             // Chọn xác nhận và hoàn tất
-            KAutoHelper.ADBHelper.Tap(deviceID, (int)503.4, (int)2164.7);
+            KAutoHelper.ADBHelper.Tap(deviceID, (int)531.9, (int)2156.6);
+            Thread.Sleep(10000);
 
+            if (m_bIsRunning == false)
+            {
+                return;
+            }
             // Chọn trang chủ
-            KAutoHelper.ADBHelper.Tap(deviceID, (int)893.6, (int)185.6);
+            KAutoHelper.ADBHelper.Tap(deviceID, (int)889.5, (int)177.5);
+            //KAutoHelper.ADBHelper.Tap(deviceID, (int)893.6, (int)185.6);
         }
 
         private void CopyAndRefreshADB()
@@ -637,6 +768,52 @@ namespace AutoQuetQR
             }
 
             Process.Start(@"GoogleChromePortable\GoogleChromePortable.exe");
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            string deviceID = string.Empty;
+            var listDevice = KAutoHelper.ADBHelper.GetDevices();
+            try
+            {
+
+                if (listDevice != null && listDevice.Count > 0)
+                {
+                    deviceID = listDevice.First();
+                }
+                else
+                {
+                    deviceID = string.Empty;
+                }
+            }
+            catch
+            {
+                deviceID = string.Empty;
+            }
+
+            if (string.IsNullOrEmpty(deviceID))
+            {
+                MessageBox.Show(this, $"Lỗi. Vui lòng kiểm tra lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show(this, $"Thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private bool m_bIsRunTay = false;
+
+        private void btnRunTay_Click(object sender, EventArgs e)
+        {
+            m_bIsRunTay = true;
+            btnChay_Click(null, null);
+        }
+
+        private void btnChay_Click_1(object sender, EventArgs e)
+        {
+            m_bIsRunTay = false;
+            btnChay_Click(null, null);
         }
     }
 }

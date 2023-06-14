@@ -384,6 +384,7 @@ namespace AutoTienDien
 
                             IJavaScriptExecutor executorUseData = driver;
                             Stop();
+                            Thread.Sleep(3000);
                             driver.Navigate().GoToUrl("https://www.vban.vn/dich-vu/thanh-toan-hoa-don-tien-dien.aspx");
 
 

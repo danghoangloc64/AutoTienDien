@@ -58,6 +58,8 @@ namespace AutoQuetQR
             this.btnLogInGmail = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.cbbSoLuongTaoProfile = new System.Windows.Forms.ComboBox();
+            this.btnTest = new System.Windows.Forms.Button();
+            this.btnRunTay = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -167,9 +169,9 @@ namespace AutoQuetQR
             this.btnChay.Name = "btnChay";
             this.btnChay.Size = new System.Drawing.Size(286, 23);
             this.btnChay.TabIndex = 11;
-            this.btnChay.Text = "Chạy";
+            this.btnChay.Text = "Chạy quét QR bằng auto điện thoại";
             this.btnChay.UseVisualStyleBackColor = true;
-            this.btnChay.Click += new System.EventHandler(this.btnChay_Click);
+            this.btnChay.Click += new System.EventHandler(this.btnChay_Click_1);
             // 
             // btnDung
             // 
@@ -186,7 +188,7 @@ namespace AutoQuetQR
             this.richTextBoxLog.Location = new System.Drawing.Point(304, 12);
             this.richTextBoxLog.Name = "richTextBoxLog";
             this.richTextBoxLog.ReadOnly = true;
-            this.richTextBoxLog.Size = new System.Drawing.Size(484, 412);
+            this.richTextBoxLog.Size = new System.Drawing.Size(484, 383);
             this.richTextBoxLog.TabIndex = 12;
             this.richTextBoxLog.Text = "";
             // 
@@ -243,6 +245,7 @@ namespace AutoQuetQR
             this.label6.Size = new System.Drawing.Size(77, 13);
             this.label6.TabIndex = 6;
             this.label6.Text = "Thời gian nghỉ:";
+            this.label6.Visible = false;
             // 
             // txtNghi
             // 
@@ -252,6 +255,7 @@ namespace AutoQuetQR
             this.txtNghi.TabIndex = 8;
             this.txtNghi.Text = "60";
             this.txtNghi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNghi.Visible = false;
             this.txtNghi.TextChanged += new System.EventHandler(this.txtNghi_TextChanged);
             // 
             // label7
@@ -262,6 +266,7 @@ namespace AutoQuetQR
             this.label7.Size = new System.Drawing.Size(26, 13);
             this.label7.TabIndex = 6;
             this.label7.Text = "giây";
+            this.label7.Visible = false;
             // 
             // cbbMien
             // 
@@ -356,15 +361,37 @@ namespace AutoQuetQR
             this.cbbSoLuongTaoProfile.Size = new System.Drawing.Size(63, 21);
             this.cbbSoLuongTaoProfile.TabIndex = 9;
             // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(644, 401);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(144, 23);
+            this.btnTest.TabIndex = 15;
+            this.btnTest.Text = "Kiểm tra kết nối điện thoại";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
+            // btnRunTay
+            // 
+            this.btnRunTay.Location = new System.Drawing.Point(12, 343);
+            this.btnRunTay.Name = "btnRunTay";
+            this.btnRunTay.Size = new System.Drawing.Size(286, 23);
+            this.btnRunTay.TabIndex = 11;
+            this.btnRunTay.Text = "Chạy quét QR bằng tay";
+            this.btnRunTay.UseVisualStyleBackColor = true;
+            this.btnRunTay.Click += new System.EventHandler(this.btnRunTay_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 436);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.checkBoxUseProxy);
             this.Controls.Add(this.btnSelectExcel);
             this.Controls.Add(this.richTextBoxLog);
             this.Controls.Add(this.btnDung);
+            this.Controls.Add(this.btnRunTay);
             this.Controls.Add(this.btnChay);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbbMien);
@@ -425,6 +452,8 @@ namespace AutoQuetQR
         private System.Windows.Forms.Button btnLogInGmail;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbbSoLuongTaoProfile;
+        private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Button btnRunTay;
     }
 }
 
