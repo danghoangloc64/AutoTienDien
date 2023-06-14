@@ -1693,7 +1693,14 @@ namespace AutoTienDienBank
                 Thread.Sleep(300);
                 if (!m_bRunning) break;
                 // Nhấn tiếp tục lúc nhập mã pin xong
-                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 50.8, 52.8);
+                if (m_strDeviceID == "RF8N30JNMSA")
+                {
+                    KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 50.8, 57.9);
+                }
+                else
+                {
+                    KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 50.8, 52.8);
+                }
                 if (!m_bRunning) break;
                 Thread.Sleep(5000);
                 if (!m_bRunning) break;
