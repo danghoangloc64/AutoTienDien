@@ -455,13 +455,13 @@ namespace AutoQuetQR
                             ss.SaveAsFile("qr.png", ScreenshotImageFormat.Png);
                             Thread.Sleep(1000);
                             CopyAndRefreshADB();
-
+                            RunAutoPhone();
                             string url = driver.Url;
 
                             while (true)
                             {
                                 Stop();
-                                Thread.Sleep(2000);
+                                Thread.Sleep(1000);
                                 if (driver.PageSource.ToLower().Contains("giao dịch thành công"))
                                 {
                                     File.Delete("qr.png");
@@ -485,6 +485,50 @@ namespace AutoQuetQR
 
                 }
             }).Start();
+        }
+
+        private void RunAutoPhone()
+        {
+            string deviceID = string.Empty;
+            var listDevice = KAutoHelper.ADBHelper.GetDevices();
+            try
+            {
+
+                if (listDevice != null && listDevice.Count > 0)
+                {
+                    deviceID = listDevice.First();
+                }
+                else
+                {
+                    deviceID = string.Empty;
+                }
+            }
+            catch
+            {
+                deviceID = string.Empty;
+            }
+
+            if (string.IsNullOrEmpty(deviceID))
+            {
+                return;
+            }
+            // Chọn QR Pay
+            KAutoHelper.ADBHelper.Tap(deviceID, (int)820.4, (int) 555.4);
+
+            // Chọn ảnh từ trong máy
+            KAutoHelper.ADBHelper.Tap(deviceID, (int)527.8, (int)2124.1);
+
+            // Chọn ảnh mới nhất
+            KAutoHelper.ADBHelper.Tap(deviceID, (int)162.1, (int)559.5);
+
+            // Chọn tiếp tục
+            KAutoHelper.ADBHelper.Tap(deviceID, (int)515.6, (int)2172.8);
+
+            // Chọn xác nhận và hoàn tất
+            KAutoHelper.ADBHelper.Tap(deviceID, (int)503.4, (int)2164.7);
+
+            // Chọn trang chủ
+            KAutoHelper.ADBHelper.Tap(deviceID, (int)893.6, (int)185.6);
         }
 
         private void CopyAndRefreshADB()
