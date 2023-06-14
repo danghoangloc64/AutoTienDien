@@ -55,16 +55,19 @@ namespace AutoQuetQR
             this.label9 = new System.Windows.Forms.Label();
             this.txtKeyTinsoft = new System.Windows.Forms.TextBox();
             this.checkBoxUseProxy = new System.Windows.Forms.CheckBox();
+            this.btnLogInGmail = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cbbSoLuongTaoProfile = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnNewProfile
             // 
-            this.btnNewProfile.Location = new System.Drawing.Point(6, 19);
+            this.btnNewProfile.Location = new System.Drawing.Point(175, 48);
             this.btnNewProfile.Name = "btnNewProfile";
-            this.btnNewProfile.Size = new System.Drawing.Size(274, 23);
+            this.btnNewProfile.Size = new System.Drawing.Size(105, 23);
             this.btnNewProfile.TabIndex = 4;
-            this.btnNewProfile.Text = "Tạo profile mới";
+            this.btnNewProfile.Text = "2. Tạo profile mới";
             this.btnNewProfile.UseVisualStyleBackColor = true;
             this.btnNewProfile.Click += new System.EventHandler(this.btnNewProfile_Click);
             // 
@@ -72,7 +75,7 @@ namespace AutoQuetQR
             // 
             this.cbbProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbProfile.FormattingEnabled = true;
-            this.cbbProfile.Location = new System.Drawing.Point(106, 48);
+            this.cbbProfile.Location = new System.Drawing.Point(106, 77);
             this.cbbProfile.Name = "cbbProfile";
             this.cbbProfile.Size = new System.Drawing.Size(174, 21);
             this.cbbProfile.TabIndex = 5;
@@ -80,7 +83,7 @@ namespace AutoQuetQR
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 52);
+            this.label1.Location = new System.Drawing.Point(6, 81);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 13);
             this.label1.TabIndex = 6;
@@ -88,8 +91,11 @@ namespace AutoQuetQR
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbbSoLuongTaoProfile);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.btnXoaProfile);
             this.groupBox1.Controls.Add(this.btnMoProfile);
+            this.groupBox1.Controls.Add(this.btnLogInGmail);
             this.groupBox1.Controls.Add(this.btnNewProfile);
             this.groupBox1.Controls.Add(this.cbbProfile);
             this.groupBox1.Controls.Add(this.label1);
@@ -102,9 +108,9 @@ namespace AutoQuetQR
             // 
             // btnXoaProfile
             // 
-            this.btnXoaProfile.Location = new System.Drawing.Point(106, 104);
+            this.btnXoaProfile.Location = new System.Drawing.Point(195, 104);
             this.btnXoaProfile.Name = "btnXoaProfile";
-            this.btnXoaProfile.Size = new System.Drawing.Size(174, 21);
+            this.btnXoaProfile.Size = new System.Drawing.Size(85, 21);
             this.btnXoaProfile.TabIndex = 7;
             this.btnXoaProfile.Text = "Xóa profile";
             this.btnXoaProfile.UseVisualStyleBackColor = true;
@@ -112,11 +118,11 @@ namespace AutoQuetQR
             // 
             // btnMoProfile
             // 
-            this.btnMoProfile.Location = new System.Drawing.Point(106, 75);
+            this.btnMoProfile.Location = new System.Drawing.Point(6, 104);
             this.btnMoProfile.Name = "btnMoProfile";
-            this.btnMoProfile.Size = new System.Drawing.Size(174, 21);
+            this.btnMoProfile.Size = new System.Drawing.Size(183, 21);
             this.btnMoProfile.TabIndex = 7;
-            this.btnMoProfile.Text = "Mở profile để đăng nhập";
+            this.btnMoProfile.Text = "3. Mở profile để đăng nhập vban";
             this.btnMoProfile.UseVisualStyleBackColor = true;
             this.btnMoProfile.Click += new System.EventHandler(this.btnMoProfile_Click);
             // 
@@ -311,6 +317,45 @@ namespace AutoQuetQR
             this.checkBoxUseProxy.UseVisualStyleBackColor = true;
             this.checkBoxUseProxy.CheckedChanged += new System.EventHandler(this.checkBoxUseProxy_CheckedChanged);
             // 
+            // btnLogInGmail
+            // 
+            this.btnLogInGmail.Location = new System.Drawing.Point(6, 19);
+            this.btnLogInGmail.Name = "btnLogInGmail";
+            this.btnLogInGmail.Size = new System.Drawing.Size(274, 23);
+            this.btnLogInGmail.TabIndex = 4;
+            this.btnLogInGmail.Text = "1. Đăng nhập Gmail mới";
+            this.btnLogInGmail.UseVisualStyleBackColor = true;
+            this.btnLogInGmail.Click += new System.EventHandler(this.btnLogInGmail_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 53);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(101, 13);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Số profile muốn tạo:";
+            // 
+            // cbbSoLuongTaoProfile
+            // 
+            this.cbbSoLuongTaoProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbSoLuongTaoProfile.FormattingEnabled = true;
+            this.cbbSoLuongTaoProfile.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.cbbSoLuongTaoProfile.Location = new System.Drawing.Point(106, 49);
+            this.cbbSoLuongTaoProfile.Name = "cbbSoLuongTaoProfile";
+            this.cbbSoLuongTaoProfile.Size = new System.Drawing.Size(63, 21);
+            this.cbbSoLuongTaoProfile.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,6 +422,9 @@ namespace AutoQuetQR
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtKeyTinsoft;
         private System.Windows.Forms.CheckBox checkBoxUseProxy;
+        private System.Windows.Forms.Button btnLogInGmail;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cbbSoLuongTaoProfile;
     }
 }
 

@@ -79,7 +79,7 @@ namespace AutoQuetQR
             cbbProfile.Items.Clear();
             cbbSoLuongProfile.Items.Clear();
             int count = 1;
-            for (int i = 1; i < 1000; i++)
+            for (int i = 1; i < 100; i++)
             {
                 string folderProfile = "profile" + i;
                 if (Directory.Exists(folderProfile))
@@ -102,41 +102,45 @@ namespace AutoQuetQR
             txtNghi.Text = Properties.Settings.Default.Nghi;
             txtKeyTinsoft.Text = Properties.Settings.Default.Keytinsoftproxy;
             checkBoxUseProxy.Checked = Properties.Settings.Default.UserProxy;
-
+            cbbSoLuongTaoProfile.SelectedIndex = 0;
             cbbMien.SelectedIndex = 3;
             //balance = await captcha.GetBalance();
+        }
+        private void CopyFilesRecursively(string sourcePath, string targetPath)
+        {
+            //Now Create all of the directories
+            foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories))
+            {
+                Directory.CreateDirectory(dirPath.Replace(sourcePath, targetPath));
+            }
+
+            //Copy all the files & Replaces any files with the same name
+            foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
+            {
+                File.Copy(newPath, newPath.Replace(sourcePath, targetPath), true);
+            }
         }
 
         private void btnNewProfile_Click(object sender, EventArgs e)
         {
-            CloseAllChrome();
-            CloseAllChromeDriver();
-            int soProfile = 1;
-            if (File.Exists("profile") == false)
+            int iSoLuong = int.Parse(cbbSoLuongTaoProfile.Text);
+            for (int i = 0; i < iSoLuong; i++)
             {
-                File.WriteAllText("profile", "1");
+                int soProfile = 1;
+                if (File.Exists("profile") == false)
+                {
+                    File.WriteAllText("profile", "1");
+                }
+                else
+                {
+                    soProfile = int.Parse(File.ReadAllText("profile"));
+                    soProfile++;
+                    File.WriteAllText("profile", soProfile.ToString());
+                }
+                CopyFilesRecursively(@"GoogleChromePortable\Data\profile", $"profile{soProfile}");
             }
-            else
-            {
-                soProfile = int.Parse(File.ReadAllText("profile"));
-                soProfile++;
-                File.WriteAllText("profile", soProfile.ToString());
-            }
-            ChromeOptions options = new ChromeOptions();
-
-            options.BinaryLocation = Environment.CurrentDirectory + "\\GoogleChromePortable\\App\\Chrome-bin\\chrome.exe";
-            options.AddArgument(@"user-data-dir=" + Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"profile{soProfile}"));
-            ChromeDriverService service = ChromeDriverService.CreateDefaultService();
-            service.HideCommandPromptWindow = true;
-
-            options.AddArgument("--start-maximized");
-            var driver = new ChromeDriver(service, options);
-            driver.Navigate().GoToUrl("https://www.facebook.com/");
-            ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
-            driver.SwitchTo().Window(driver.WindowHandles.Last());
-            driver.Navigate().GoToUrl("https://www.vban.vn/dich-vu/thanh-toan-hoa-don-tien-dien.aspx");
             LoadProfile();
-            MessageBox.Show(this, "Vui lòng đăng nhập FACEBOOK và VBAN", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(this, $"Đã tạo xong {iSoLuong} profile.\r\nCác profile vừa tạo đã được đăng nhập gmail ở bước 1.\r\nVui lòng mở từng profile ở bước 3 để chọn đăng nhập vban.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void txtKey2Captcha_TextChanged(object sender, EventArgs e)
@@ -147,6 +151,8 @@ namespace AutoQuetQR
 
         private void btnXoaProfile_Click(object sender, EventArgs e)
         {
+            CloseAllChrome();
+            CloseAllChromeDriver();
             try
             {
                 Directory.Delete(cbbProfile.Text, true);
@@ -172,11 +178,8 @@ namespace AutoQuetQR
                 options.AddArgument("--start-maximized");
                 service.HideCommandPromptWindow = true;
                 var driver = new ChromeDriver(service, options);
-                driver.Navigate().GoToUrl("https://www.facebook.com/");
-                ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
-                driver.SwitchTo().Window(driver.WindowHandles.Last());
                 driver.Navigate().GoToUrl("https://www.vban.vn/dich-vu/thanh-toan-hoa-don-tien-dien.aspx");
-                MessageBox.Show(this, "Vui lòng đăng nhập FACEBOOK và VBAN", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "Vui lòng đăng nhập vban", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -192,6 +195,10 @@ namespace AutoQuetQR
             CloseAllChromeDriver();
             Check.CheckTime();
 
+            if (File.Exists("qr.png"))
+            {
+                File.Delete("qr");
+            }
 
             captcha = new _2Captcha(txtKey2Captcha.Text);
 
@@ -429,7 +436,7 @@ namespace AutoQuetQR
                             Thread.Sleep(5000);
 
 
-                            var js = String.Format("window.scrollTo({0}, {1})", 0, 250);
+                            var js = String.Format("window.scrollTo({0}, {1})", 0, 200);
                             executorUseData.ExecuteScript(js);
 
 
@@ -439,6 +446,16 @@ namespace AutoQuetQR
                             //actions.Perform();
                             Thread.Sleep(5000);
 
+                            while (File.Exists("qr.png"))
+                            {
+                                Thread.Sleep(1000);
+                            }
+
+                            Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
+                            ss.SaveAsFile("qr.png", ScreenshotImageFormat.Png);
+                            Thread.Sleep(1000);
+                            CopyAndRefreshADB();
+
                             string url = driver.Url;
 
                             while (true)
@@ -447,6 +464,7 @@ namespace AutoQuetQR
                                 Thread.Sleep(2000);
                                 if (driver.PageSource.ToLower().Contains("giao dịch thành công"))
                                 {
+                                    File.Delete("qr.png");
                                     driver.Navigate().GoToUrl("https://www.vban.vn/dich-vu/thanh-toan-hoa-don-tien-dien.aspx");
                                     break;
                                 }
@@ -469,6 +487,28 @@ namespace AutoQuetQR
             }).Start();
         }
 
+        private void CopyAndRefreshADB()
+        {
+            using (Process cmd = new Process())
+            {
+                cmd.StartInfo.FileName = "adb.exe";
+                cmd.StartInfo.Arguments = $"push qr.png /sdcard/Pictures/qr.png";
+                cmd.StartInfo.CreateNoWindow = true;
+                cmd.StartInfo.UseShellExecute = false;
+                cmd.Start();
+                cmd.WaitForExit();
+            }
+            Thread.Sleep(1000);
+            using (Process cmd = new Process())
+            {
+                cmd.StartInfo.FileName = "adb.exe";
+                cmd.StartInfo.Arguments = $"shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/Pictures";
+                cmd.StartInfo.CreateNoWindow = true;
+                cmd.StartInfo.UseShellExecute = false;
+                cmd.Start();
+                cmd.WaitForExit();
+            }
+        }
         private void Stop()
         {
             if (m_bIsRunning == false)
@@ -526,6 +566,33 @@ namespace AutoQuetQR
         {
             Properties.Settings.Default.UserProxy = checkBoxUseProxy.Checked;
             Properties.Settings.Default.Save();
+        }
+
+        private void btnLogInGmail_Click(object sender, EventArgs e)
+        {
+            CloseAllChrome();
+            CloseAllChromeDriver();
+
+            cbbProfile.Items.Clear();
+            cbbSoLuongProfile.Items.Clear();
+            for (int i = 1; i < 100; i++)
+            {
+                string folderProfile = "profile" + i;
+                if (Directory.Exists(folderProfile))
+                {
+                    Directory.Delete(folderProfile, true);
+                }
+            }
+            if (Directory.Exists(@"GoogleChromePortable\Data\profile"))
+            {
+                Directory.Delete(@"GoogleChromePortable\Data\profile", true);
+            }
+            if (File.Exists(@"profile"))
+            {
+                File.Delete(@"profile");
+            }
+
+            Process.Start(@"GoogleChromePortable\GoogleChromePortable.exe");
         }
     }
 }
