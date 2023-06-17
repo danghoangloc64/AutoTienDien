@@ -52,6 +52,9 @@ namespace AutoTienDienBank
             this.label8 = new System.Windows.Forms.Label();
             this.cbbThe = new System.Windows.Forms.ComboBox();
             this.radioButtonMSB = new System.Windows.Forms.RadioButton();
+            this.txtMaPin5 = new System.Windows.Forms.TextBox();
+            this.txtMaPin6 = new System.Windows.Forms.TextBox();
+            this.radioButtonMBB = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // btnSelectExcel
@@ -136,7 +139,7 @@ namespace AutoTienDienBank
             this.txtSleep.Location = new System.Drawing.Point(197, 65);
             this.txtSleep.Name = "txtSleep";
             this.txtSleep.Size = new System.Drawing.Size(98, 20);
-            this.txtSleep.TabIndex = 6;
+            this.txtSleep.TabIndex = 8;
             this.txtSleep.Text = "70";
             this.txtSleep.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -164,7 +167,7 @@ namespace AutoTienDienBank
             this.radioButtonVIB.Location = new System.Drawing.Point(197, 91);
             this.radioButtonVIB.Name = "radioButtonVIB";
             this.radioButtonVIB.Size = new System.Drawing.Size(42, 17);
-            this.radioButtonVIB.TabIndex = 7;
+            this.radioButtonVIB.TabIndex = 9;
             this.radioButtonVIB.Text = "VIB";
             this.radioButtonVIB.UseVisualStyleBackColor = true;
             this.radioButtonVIB.CheckedChanged += new System.EventHandler(this.radioButtonVIB_CheckedChanged);
@@ -175,7 +178,7 @@ namespace AutoTienDienBank
             this.radioButtonVPB.Location = new System.Drawing.Point(245, 91);
             this.radioButtonVPB.Name = "radioButtonVPB";
             this.radioButtonVPB.Size = new System.Drawing.Size(46, 17);
-            this.radioButtonVPB.TabIndex = 8;
+            this.radioButtonVPB.TabIndex = 10;
             this.radioButtonVPB.Text = "VPB";
             this.radioButtonVPB.UseVisualStyleBackColor = true;
             this.radioButtonVPB.CheckedChanged += new System.EventHandler(this.radioButtonVPB_CheckedChanged);
@@ -185,7 +188,7 @@ namespace AutoTienDienBank
             this.btnChay.Location = new System.Drawing.Point(12, 243);
             this.btnChay.Name = "btnChay";
             this.btnChay.Size = new System.Drawing.Size(525, 23);
-            this.btnChay.TabIndex = 11;
+            this.btnChay.TabIndex = 15;
             this.btnChay.Text = "Chạy";
             this.btnChay.UseVisualStyleBackColor = true;
             this.btnChay.Click += new System.EventHandler(this.btnChay_Click);
@@ -195,7 +198,7 @@ namespace AutoTienDienBank
             this.btnDung.Location = new System.Drawing.Point(12, 272);
             this.btnDung.Name = "btnDung";
             this.btnDung.Size = new System.Drawing.Size(525, 23);
-            this.btnDung.TabIndex = 12;
+            this.btnDung.TabIndex = 16;
             this.btnDung.Text = "Dừng";
             this.btnDung.UseVisualStyleBackColor = true;
             this.btnDung.Click += new System.EventHandler(this.btnDung_Click);
@@ -215,7 +218,7 @@ namespace AutoTienDienBank
             this.txtMa.Name = "txtMa";
             this.txtMa.ReadOnly = true;
             this.txtMa.Size = new System.Drawing.Size(491, 20);
-            this.txtMa.TabIndex = 13;
+            this.txtMa.TabIndex = 17;
             // 
             // cbbModel
             // 
@@ -230,7 +233,7 @@ namespace AutoTienDienBank
             this.cbbModel.Location = new System.Drawing.Point(197, 114);
             this.cbbModel.Name = "cbbModel";
             this.cbbModel.Size = new System.Drawing.Size(251, 21);
-            this.cbbModel.TabIndex = 9;
+            this.cbbModel.TabIndex = 13;
             this.cbbModel.SelectedIndexChanged += new System.EventHandler(this.cbbModel_SelectedIndexChanged);
             // 
             // label7
@@ -268,7 +271,7 @@ namespace AutoTienDienBank
             this.cbbThe.Location = new System.Drawing.Point(197, 141);
             this.cbbThe.Name = "cbbThe";
             this.cbbThe.Size = new System.Drawing.Size(46, 21);
-            this.cbbThe.TabIndex = 10;
+            this.cbbThe.TabIndex = 14;
             this.cbbThe.SelectedIndexChanged += new System.EventHandler(this.cbbThe_SelectedIndexChanged);
             // 
             // radioButtonMSB
@@ -277,10 +280,37 @@ namespace AutoTienDienBank
             this.radioButtonMSB.Location = new System.Drawing.Point(297, 91);
             this.radioButtonMSB.Name = "radioButtonMSB";
             this.radioButtonMSB.Size = new System.Drawing.Size(48, 17);
-            this.radioButtonMSB.TabIndex = 8;
+            this.radioButtonMSB.TabIndex = 11;
             this.radioButtonMSB.Text = "MSB";
             this.radioButtonMSB.UseVisualStyleBackColor = true;
             this.radioButtonMSB.CheckedChanged += new System.EventHandler(this.radioButtonMSB_CheckedChanged);
+            // 
+            // txtMaPin5
+            // 
+            this.txtMaPin5.Location = new System.Drawing.Point(405, 39);
+            this.txtMaPin5.Name = "txtMaPin5";
+            this.txtMaPin5.Size = new System.Drawing.Size(46, 20);
+            this.txtMaPin5.TabIndex = 6;
+            this.txtMaPin5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtMaPin6
+            // 
+            this.txtMaPin6.Location = new System.Drawing.Point(457, 39);
+            this.txtMaPin6.Name = "txtMaPin6";
+            this.txtMaPin6.Size = new System.Drawing.Size(46, 20);
+            this.txtMaPin6.TabIndex = 7;
+            this.txtMaPin6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // radioButtonMBB
+            // 
+            this.radioButtonMBB.AutoSize = true;
+            this.radioButtonMBB.Location = new System.Drawing.Point(351, 91);
+            this.radioButtonMBB.Name = "radioButtonMBB";
+            this.radioButtonMBB.Size = new System.Drawing.Size(48, 17);
+            this.radioButtonMBB.TabIndex = 12;
+            this.radioButtonMBB.Text = "MBB";
+            this.radioButtonMBB.UseVisualStyleBackColor = true;
+            this.radioButtonMBB.CheckedChanged += new System.EventHandler(this.radioButtonMBB_CheckedChanged);
             // 
             // MainForm
             // 
@@ -293,6 +323,7 @@ namespace AutoTienDienBank
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnDung);
             this.Controls.Add(this.btnChay);
+            this.Controls.Add(this.radioButtonMBB);
             this.Controls.Add(this.radioButtonMSB);
             this.Controls.Add(this.radioButtonVPB);
             this.Controls.Add(this.label8);
@@ -300,6 +331,8 @@ namespace AutoTienDienBank
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtSleep);
+            this.Controls.Add(this.txtMaPin6);
+            this.Controls.Add(this.txtMaPin5);
             this.Controls.Add(this.txtMaPin4);
             this.Controls.Add(this.txtMaPin3);
             this.Controls.Add(this.txtMaPin2);
@@ -346,6 +379,9 @@ namespace AutoTienDienBank
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbbThe;
         private System.Windows.Forms.RadioButton radioButtonMSB;
+        private System.Windows.Forms.TextBox txtMaPin5;
+        private System.Windows.Forms.TextBox txtMaPin6;
+        private System.Windows.Forms.RadioButton radioButtonMBB;
     }
 }
 

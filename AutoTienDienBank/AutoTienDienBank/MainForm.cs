@@ -27,6 +27,7 @@ namespace AutoTienDienBank
         {
             InitializeComponent();
         }
+
         private void btnSelectExcel_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -180,6 +181,7 @@ namespace AutoTienDienBank
                 KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 50.4, 56.7);
             }
         }
+
         private void NhapOPTVPB_Note20Ultra5G(string soPin)
         {
             if (soPin == "1")
@@ -223,6 +225,7 @@ namespace AutoTienDienBank
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)555.7, (int)2085.0);
             }
         }
+
         private void NhapOPTVPB_Note10Lite(string soPin)
         {
             if (soPin == "1")
@@ -266,6 +269,7 @@ namespace AutoTienDienBank
                 KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 49.2, 90.0);
             }
         }
+
         private void NhapOTPVIB_Note20Ultra5G(string soPin)
         {
             if (soPin == "1")
@@ -309,6 +313,7 @@ namespace AutoTienDienBank
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)551.8, (int)2038.0);
             }
         }
+
         private void NhapOTPVPB_S215G(string soPin)
         {
             if (soPin == "1")
@@ -536,7 +541,174 @@ namespace AutoTienDienBank
                         RunMSB_S23Ultra();
                     }
                 }
+                else if (radioButtonMBB.Checked)
+                {
+                    if (cbbModel.SelectedIndex == 1)
+                    {
+                        RunMBB_Note10Lite();
+                    }
+                }
             });
+        }
+
+        private void RunMBB_Note10Lite()
+        {
+            foreach (var data in m_listExcelDataModels)
+            {
+                // Chọn thanh toán
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)206.8, (int)1360.1);
+                if (!m_bRunning) break;
+                Thread.Sleep(1000);
+                if (!m_bRunning) break;
+                // Chọn mục điện
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)247.4, (int)1100.0);
+                if (!m_bRunning) break;
+                Thread.Sleep(1000);
+                if (!m_bRunning) break;
+                // Chọn mục tài khoản nguồn
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)422.1, (int)616.4);
+                if (!m_bRunning) break;
+                Thread.Sleep(1000);
+                if (!m_bRunning) break;
+                // Chọn mục thẻ
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)816.3, (int)510.7);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn thẻ đầu tiên
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)466.9, (int)718.0);
+                if (!m_bRunning) break;
+                Thread.Sleep(1000);
+                if (!m_bRunning) break;
+                // Chọn đồng ý
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)531.9, (int)2006.2);
+                if (!m_bRunning) break;
+                Thread.Sleep(1000);
+                if (!m_bRunning) break;
+                // Chọn mã khách hàng
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)349.0, (int)864.3);
+                if (!m_bRunning) break;
+                Thread.Sleep(1000);
+                if (!m_bRunning) break;
+                // Nhập mã khách
+                KAutoHelper.ADBHelper.InputText(m_strDeviceID, data.Ma);
+                if (!m_bRunning) break;
+                Thread.Sleep(1000);
+                if (!m_bRunning) break;
+                // Chọn tiếp theo
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)544.1, (int)1079.7);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn tiếp tục
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)540.0, (int)1762.4);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn xác nhận
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)544.1, (int)2172.8);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Nhập mã pin
+                NhapOTPMBB_Note10Lite(txtMaPin1.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(200);
+                if (!m_bRunning) break;
+                NhapOTPMBB_Note10Lite(txtMaPin2.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(200);
+                if (!m_bRunning) break;
+                NhapOTPMBB_Note10Lite(txtMaPin3.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(200);
+                if (!m_bRunning) break;
+                NhapOTPMBB_Note10Lite(txtMaPin4.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(200);
+                if (!m_bRunning) break;
+                NhapOTPMBB_Note10Lite(txtMaPin5.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(200);
+                if (!m_bRunning) break;
+                NhapOTPMBB_Note10Lite(txtMaPin6.Text);
+                if (!m_bRunning) break;
+                Thread.Sleep(200);
+                if (!m_bRunning) break;
+                // Chọn lấy mã otp
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)523.7, (int)1156.9);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn nhập otp
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)511.6, (int)730.2);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn tiếp tục
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)523.7, (int)2160.6);
+                if (!m_bRunning) break;
+                Thread.Sleep(5000);
+                if (!m_bRunning) break;
+                // Swipe
+                KAutoHelper.ADBHelper.Swipe(m_strDeviceID, 540, 1620, 540, 500);
+                if (!m_bRunning) break;
+                Thread.Sleep(2000);
+                if (!m_bRunning) break;
+                // Chọn hoàn thành
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)507.5, (int)2038.7);
+
+                int iSleep = 0;
+                while (iSleep <= m_iSleepTime)
+                {
+                    Thread.Sleep(1000);
+                    iSleep += 1000;
+                }
+            }
+        }
+
+        private void NhapOTPMBB_Note10Lite(string soPin)
+        {
+            if (soPin == "1")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)174.3, (int)1640.5);
+            }
+            if (soPin == "2")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)397.8, (int)1640.5);
+            }
+            if (soPin == "3")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)726.9, (int)1640.5);
+            }
+            if (soPin == "4")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)190.5, (int)1778.6);
+            }
+            if (soPin == "5")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)418.1, (int)1799.0);
+            }
+            if (soPin == "6")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)710.7, (int)1799.0);
+            }
+            if (soPin == "7")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)190.5, (int)1957.5);
+            }
+            if (soPin == "8")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)410.0, (int)1994.0);
+            }
+            if (soPin == "9")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)702.6, (int)1949.3);
+            }
+            if (soPin == "0")
+            {
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)385.6, (int)2172.8);
+            }
         }
 
         private void RunVPB_S23Ultra()
@@ -1312,7 +1484,6 @@ namespace AutoTienDienBank
             }
         }
 
-
         private void RunVPB_A51()
         {
             foreach (var data in m_listExcelDataModels)
@@ -1407,6 +1578,7 @@ namespace AutoTienDienBank
                 }
             }
         }
+
         private void RunVPB_Note10Lite()
         {
             foreach (var data in m_listExcelDataModels)
@@ -1516,6 +1688,7 @@ namespace AutoTienDienBank
                 }
             }
         }
+
         private void RunVIB_A51()
         {
             foreach (var data in m_listExcelDataModels)
@@ -1622,6 +1795,7 @@ namespace AutoTienDienBank
                 }
             }
         }
+
         private void RunVIB_Note10Lite()
         {
             foreach (var data in m_listExcelDataModels)
@@ -1735,6 +1909,7 @@ namespace AutoTienDienBank
                 }
             }
         }
+
         private void RunVIB_Note20Ultra5G()
         {
             foreach (var data in m_listExcelDataModels)
@@ -1965,6 +2140,7 @@ namespace AutoTienDienBank
             radioButtonVIB.Checked = Properties.Settings.Default.VIB;
             radioButtonVPB.Checked = Properties.Settings.Default.VPB;
             radioButtonMSB.Checked = Properties.Settings.Default.MSB;
+            radioButtonMBB.Checked = Properties.Settings.Default.MBB;
             cbbModel.SelectedIndex = Properties.Settings.Default.ModelDienThoai;
             cbbThe.SelectedIndex = Properties.Settings.Default.HangThe;
         }
@@ -1974,6 +2150,8 @@ namespace AutoTienDienBank
             Properties.Settings.Default.VIB = true;
             Properties.Settings.Default.VPB = false;
             Properties.Settings.Default.MSB = false;
+            Properties.Settings.Default.MBB = false;
+            EnablePin56(false);
             Properties.Settings.Default.Save();
         }
 
@@ -1982,6 +2160,8 @@ namespace AutoTienDienBank
             Properties.Settings.Default.VPB = true;
             Properties.Settings.Default.VIB = false;
             Properties.Settings.Default.MSB = false;
+            Properties.Settings.Default.MBB = false;
+            EnablePin56(false);
             Properties.Settings.Default.Save();
         }
 
@@ -1997,47 +2177,30 @@ namespace AutoTienDienBank
             Properties.Settings.Default.Save();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var listDevice = KAutoHelper.ADBHelper.GetDevices();
-            if (listDevice != null && listDevice.Count > 0)
-            {
-                m_strDeviceID = listDevice.First();
-            }
-            else
-            {
-                m_strDeviceID = string.Empty;
-            }
-            // Nhấn từ
-            KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 45.9, 80.5);
-            Thread.Sleep(2000);
-            // Chọn thẻ tín dụng
-
-            m_iIndexThe = int.Parse(cbbThe.Text) - 1;
-            KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 40.6, 90.4 - 8 * m_iIndexThe);
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-            var listDevice = KAutoHelper.ADBHelper.GetDevices();
-            if (listDevice != null && listDevice.Count > 0)
-            {
-                m_strDeviceID = listDevice.First();
-            }
-            else
-            {
-                m_strDeviceID = string.Empty;
-            }
-            KAutoHelper.ADBHelper.Swipe(m_strDeviceID, 540, 1620, 540, 500);
-        }
-
         private void radioButtonMSB_CheckedChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.MSB = true;
             Properties.Settings.Default.VPB = false;
             Properties.Settings.Default.VIB = false;
+            Properties.Settings.Default.MBB = false;
+            EnablePin56(false);
             Properties.Settings.Default.Save();
+        }
+
+        private void radioButtonMBB_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.MBB = true;
+            Properties.Settings.Default.MSB = false;
+            Properties.Settings.Default.VPB = false;
+            Properties.Settings.Default.VIB = false;
+            EnablePin56(true);
+            Properties.Settings.Default.Save();
+        }
+
+        private void EnablePin56(bool enable)
+        {
+            txtMaPin5.Enabled = enable;
+            txtMaPin6.Enabled = enable;
         }
     }
 }

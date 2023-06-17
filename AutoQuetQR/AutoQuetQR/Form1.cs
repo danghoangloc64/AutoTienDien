@@ -197,7 +197,7 @@ namespace AutoQuetQR
 
             if (File.Exists("qr.png"))
             {
-                File.Delete("qr");
+                File.Delete("qr.png");
             }
 
             captcha = new _2Captcha(txtKey2Captcha.Text);
@@ -265,6 +265,10 @@ namespace AutoQuetQR
                 m_bIsRunning = true;
                 var queryResultPage = m_listExcelDataModels.Skip(soItemMoiLuong * i).Take(soItemMoiLuong).ToList();
                 string profile = cbbProfile.Items[i].ToString();
+
+                //AddLog($"{i} {string.Join(", ", queryResultPage.Select(x=>x.Ma))}");
+
+
                 Run(queryResultPage, thoiGianNghi, sdt, profile, i, mien);
             }
 
@@ -280,6 +284,7 @@ namespace AutoQuetQR
                 int countCheck = 0;
                 try
                 {
+                    AddLog($"Danh sách mã chạy ở tab {stt + 1}: {string.Join(", ", excelDataModels.Select(x => x.Ma))}. Tổng cộng {excelDataModels.Count} mã");
                     string strProxy = "";
                     if (m_listKeyProxy.Count > 0)
                     {
@@ -332,14 +337,16 @@ namespace AutoQuetQR
 
 
 
-
+                    int demmmm = 1;
                     foreach (var data in excelDataModels)
                     {
+                        AddLog($"Tab {stt + 1} đang chạy {demmmm++}/{excelDataModels.Count}: {data.Ma}");
                         Check.CheckTime();
                         try
                         {
-                            if (countCheck > 3)
+                            if (countCheck > 5)
                             {
+                                countCheck = 0;
                                 driver.Close();
                                 driver.Quit();
                                 strProxy = "";
@@ -392,6 +399,7 @@ namespace AutoQuetQR
                                 driver.Manage().Window.Position = new Point(stt * 290, 0);
                             }
 
+                            Thread.Sleep(3000);
                             IJavaScriptExecutor executorUseData = driver;
                             if (m_bIsRunning == false)
                             {
@@ -449,9 +457,7 @@ namespace AutoQuetQR
                             {
                                 return;
                             }
-                            Thread.Sleep(5000);
-
-
+                            Thread.Sleep(8000);
 
                             if (driver.PageSource.ToLower().Contains("không nợ cước"))
                             {
@@ -477,7 +483,7 @@ namespace AutoQuetQR
                             var btnVN = driver.FindElement(By.XPath("//button[@ng-click='ChoosenVnpayQrTab()']"));
                             executorUseData.ExecuteScript("arguments[0].click()", btnVN);
 
-                            Thread.Sleep(5000);
+                            Thread.Sleep(8000);
 
                             if (m_bIsRunning == false)
                             {
@@ -496,84 +502,116 @@ namespace AutoQuetQR
                             //actions.Perform();
                             Thread.Sleep(2000);
 
-
-                            lock (lockobject)
+                            if (m_bIsRunTay)
                             {
-                                if (!m_bIsRunTay)
+                                while (true)
                                 {
-                                    Random rnd = new Random();
-                                    while (File.Exists("qr.png"))
+                                    AddLog($"Tab {stt + 1} đang chờ quét.");
+                                    if (m_bIsRunning == false)
                                     {
+                                        return;
+                                    }
+                                    Thread.Sleep(5000);
+                                    if (driver.PageSource.ToLower().Contains("giao dịch thành công"))
+                                    {
+                                        if (!m_bIsRunTay)
+                                        {
+                                            File.Delete("qr.png");
+                                        }
+                                        Thread.Sleep(5000);
+                                        driver.Navigate().GoToUrl("https://www.vban.vn/dich-vu/thanh-toan-hoa-don-tien-dien.aspx");
+                                        break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                lock (lockobject)
+                                {
+                                    if (!m_bIsRunTay)
+                                    {
+                                        Random rnd = new Random();
+                                        while (File.Exists("qr.png"))
+                                        {
+                                            if (m_bIsRunning == false)
+                                            {
+                                                return;
+                                            }
+                                            Thread.Sleep(rnd.Next(2000, 5000));
+                                        }
                                         if (m_bIsRunning == false)
                                         {
                                             return;
                                         }
-                                        Thread.Sleep(rnd.Next(2000, 5000));
-                                    }
-                                    if (m_bIsRunning == false)
-                                    {
-                                        return;
-                                    }
-                                    Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
-                                    if (m_bIsRunning == false)
-                                    {
-                                        return;
-                                    }
+                                        Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
+                                        if (m_bIsRunning == false)
+                                        {
+                                            return;
+                                        }
 
+                                        ss.SaveAsFile("qr.png", ScreenshotImageFormat.Png);
 
-                                    ss.SaveAsFile("qr.png", ScreenshotImageFormat.Png);
+                                        if (m_bIsRunning == false)
+                                        {
+                                            return;
+                                        }
+                                        Thread.Sleep(2000);
+                                        if (m_bIsRunning == false)
+                                        {
+                                            return;
+                                        }
+                                        CopyAndRefreshADB();
+                                        if (m_bIsRunning == false)
+                                        {
+                                            return;
+                                        }
+                                        AddLog($"Mã {data.Ma} đang quét QR.");
+                                        if (m_bIsRunning == false)
+                                        {
+                                            return;
+                                        }
+                                        RunAutoPhone();
+                                        if (m_bIsRunning == false)
+                                        {
+                                            return;
+                                        }
+                                    }
+                                    string url = driver.Url;
 
-                                    if (m_bIsRunning == false)
+                                    while (true)
                                     {
-                                        return;
-                                    }
-                                    Thread.Sleep(2000);
-                                    if (m_bIsRunning == false)
-                                    {
-                                        return;
-                                    }
-                                    CopyAndRefreshADB();
-                                    if (m_bIsRunning == false)
-                                    {
-                                        return;
-                                    }
-                                    AddLog($"Mã {data.Ma} đang quét QR.");
-                                    if (m_bIsRunning == false)
-                                    {
-                                        return;
-                                    }
-                                    RunAutoPhone();
-                                    if (m_bIsRunning == false)
-                                    {
-                                        return;
-                                    }
-                                }
-                                string url = driver.Url;
-
-                                while (true)
-                                {
-                                    if (m_bIsRunning == false)
-                                    {
-                                        return;
-                                    }
-                                    Thread.Sleep(1000);
-                                    if (driver.PageSource.ToLower().Contains("giao dịch thành công"))
-                                    {
-                                        File.Delete("qr.png");
-                                        driver.Navigate().GoToUrl("https://www.vban.vn/dich-vu/thanh-toan-hoa-don-tien-dien.aspx");
-                                        break;
+                                        AddLog($"Tab {stt + 1} đang chờ quét.");
+                                        if (m_bIsRunning == false)
+                                        {
+                                            return;
+                                        }
+                                        Thread.Sleep(1000);
+                                        if (driver.PageSource.ToLower().Contains("giao dịch thành công"))
+                                        {
+                                            if (!m_bIsRunTay)
+                                            {
+                                                File.Delete("qr.png");
+                                            }
+                                            driver.Navigate().GoToUrl("https://www.vban.vn/dich-vu/thanh-toan-hoa-don-tien-dien.aspx");
+                                            break;
+                                        }
                                     }
                                 }
                             }
                         }
                         catch (Exception ex)
                         {
+                            continue;
+                            //driver.Navigate().GoToUrl("https://www.vban.vn/dich-vu/thanh-toan-hoa-don-tien-dien.aspx");
                         }
                         finally
                         {
                             countCheck++;
                         }
                     }
+                    AddLog($"Tab {stt + 1} xong.");
+                    driver.Close();
+                    driver.Quit();
                 }
                 catch (Exception ex)
                 {
@@ -814,6 +852,11 @@ namespace AutoQuetQR
         {
             m_bIsRunTay = false;
             btnChay_Click(null, null);
+        }
+
+        private void btnClearLog_Click(object sender, EventArgs e)
+        {
+            richTextBoxLog.Clear();
         }
     }
 }
