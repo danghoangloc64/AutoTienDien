@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyKeyAutoTienDienBank
+namespace QuanLyKeyAuto
 {
     public partial class ThemMoiForm : DevExpress.XtraEditors.XtraForm
     {

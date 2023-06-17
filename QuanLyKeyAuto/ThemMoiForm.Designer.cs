@@ -1,5 +1,5 @@
 ﻿
-namespace QuanLyKeyAutoTienDienBank
+namespace QuanLyKeyAuto
 {
     partial class ThemMoiForm
     {
@@ -36,6 +36,8 @@ namespace QuanLyKeyAutoTienDienBank
             this.btnOK = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTenGoiNho = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // txtSerialNumber
@@ -78,7 +80,7 @@ namespace QuanLyKeyAutoTienDienBank
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(696, 99);
+            this.btnOK.Location = new System.Drawing.Point(696, 126);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 6;
@@ -104,13 +106,34 @@ namespace QuanLyKeyAutoTienDienBank
             this.txtTenGoiNho.Size = new System.Drawing.Size(564, 23);
             this.txtTenGoiNho.TabIndex = 3;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 101);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(156, 17);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Hạn sử dụng đến ngày:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(207, 99);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(140, 21);
+            this.dateTimePicker1.TabIndex = 7;
+            // 
             // ThemMoiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 135);
+            this.ClientSize = new System.Drawing.Size(786, 161);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtKey);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtTenGoiNho);
             this.Controls.Add(this.label3);
@@ -137,5 +160,7 @@ namespace QuanLyKeyAutoTienDienBank
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTenGoiNho;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

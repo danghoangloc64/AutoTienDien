@@ -1,5 +1,5 @@
 ﻿
-namespace QuanLyKeyAutoTienDienBank
+namespace QuanLyKeyAuto
 {
     partial class MainForm
     {
