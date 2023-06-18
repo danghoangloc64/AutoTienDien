@@ -9,13 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AutoTienDienBank
+namespace AutoQuetQR
 {
-    public partial class DangKyAutoTienDienBank : Form
+    public partial class DangKyAutoQuetQR : Form
     {
         private string m_strSerialNumber;
         private InformationBLL m_objInformationBLL = new InformationBLL();
-        public DangKyAutoTienDienBank(string serialNumber)
+        public DangKyAutoQuetQR(string serialNumber)
         {
             InitializeComponent();
             m_strSerialNumber = serialNumber;
@@ -28,10 +28,10 @@ namespace AutoTienDienBank
             {
                 return;
             }
-            var dangKyAutoTienDienBank = m_objInformationBLL.DangKyAutoTienDienBank(m_strSerialNumber, txtKey.Text, "AutoTienDienBank");
+            var dangKyAutoTienDienBank = m_objInformationBLL.DangKyAutoTienDienBank(m_strSerialNumber, txtKey.Text, "AutoQuetQR");
             if (dangKyAutoTienDienBank)
             {
-                MessageBox.Show(this, "ĐĂNG KÝ AUTO TIỀN ĐIỆN BANK THÀNH CÔNG.\r\nVUI LÒNG KHỞI ĐỘNG LẠI TOOL.", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "ĐĂNG KÝ AUTO QUÉT QR THÀNH CÔNG.\r\nVUI LÒNG KHỞI ĐỘNG LẠI TOOL.", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (System.Windows.Forms.Application.MessageLoop)
                 {
                     // WinForms app

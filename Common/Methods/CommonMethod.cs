@@ -10,7 +10,7 @@ namespace Common.Methods
 {
     public static class CommonMethod
     {
-        public static string GetSerialNumber()
+        public static string GetSerialNumber(string loaiTool)
         {
             try
             {
@@ -20,7 +20,7 @@ namespace Common.Methods
                     // get the hardware serial no.
                     if (wmi_HD["SerialNumber"] != null)
                     {
-                        return SHA2565Hash(MD5Hash(wmi_HD["SerialNumber"].ToString().Trim()));
+                        return SHA2565Hash(MD5Hash(wmi_HD["SerialNumber"].ToString().Trim() + loaiTool) + loaiTool);
                     }
                 }
                 return string.Empty;

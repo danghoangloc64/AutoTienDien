@@ -11,6 +11,8 @@ namespace Common.Model
         public string TenKey { get; set; }
         public string SerialNumber { get; set; }
         public string Key { get; set; }
+        public DateTime HanSuDung { get; set; }
+        public string LoaiTool { get; set; }
         public bool DangSuDung { get; set; }
         public bool DaKichHoat { get; set; }
     }

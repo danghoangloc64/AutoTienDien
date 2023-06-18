@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Common.BLL;
+using Common.Methods;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +18,15 @@ namespace AutoQuetQR
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            string serialNumber = CommonMethod.GetSerialNumber("AutoQuetQR");
+            if ((new InformationBLL()).CheckSerialNumber(serialNumber, "AutoQuetQR") == false)
+            {
+                Application.Run(new DangKyAutoQuetQR(serialNumber));
+            }
+            else
+            {
+                Application.Run(new Form1());
+            }
         }
     }
 }

@@ -25,6 +25,8 @@ namespace Common.BLL
                         Key = data.Key,
                         SerialNumber = data.SerialNumber,
                         DaKichHoat = data.DaKichHoat,
+                        LoaiTool = data.LoaiTool,
+                        HanSuDung = data.HanSuDung.ToString("dd/MM/yyyy")
                     };
                     informationViewModels.Add(informationViewModel);
                 }
@@ -32,11 +34,11 @@ namespace Common.BLL
             return informationViewModels;
         }
 
-        public bool ThemMoiKey(string tenGoiNho, string serialNumber, string key)
+        public bool ThemMoiKey(string tenGoiNho, string serialNumber, string key, string loaiTool, DateTime hsd)
         {
             using (var context = new AutoTienDienBankContext())
             {
-                var data = context.Informations.FirstOrDefault(x => x.Deleted == false && x.SerialNumber == serialNumber && x.Key == key);
+                var data = context.Informations.FirstOrDefault(x => x.Deleted == false && x.SerialNumber == serialNumber && x.Key == key && x.LoaiTool == loaiTool);
                 if (data != null)
                 {
                     return false;
@@ -50,6 +52,8 @@ namespace Common.BLL
                         Key = key,
                         DaKichHoat = false,
                         DangSuDung = true,
+                        LoaiTool = loaiTool,
+                        HanSuDung = hsd
                     };
                     context.Informations.Add(informationModel);
                     context.SaveChanges();
@@ -71,11 +75,11 @@ namespace Common.BLL
             }
         }
 
-        public bool DangKyAutoTienDienBank(string serialNumber, string key)
+        public bool DangKyAutoTienDienBank(string serialNumber, string key, string loaiTool)
         {
             using (var context = new AutoTienDienBankContext())
             {
-                var data = context.Informations.FirstOrDefault(x => x.Deleted == false && x.SerialNumber == serialNumber && x.DangSuDung == true && x.Key == key);
+                var data = context.Informations.FirstOrDefault(x => x.Deleted == false && x.SerialNumber == serialNumber && x.DangSuDung == true && x.Key == key && x.LoaiTool == loaiTool && x.HanSuDung > DateTime.Now);
                 if (data != null)
                 {
                     data.DaKichHoat = true;
@@ -115,11 +119,11 @@ namespace Common.BLL
             }
         }
 
-        public bool CheckSerialNumber(string serialNumber)
+        public bool CheckSerialNumber(string serialNumber, string loaiTool)
         {
             using (var context = new AutoTienDienBankContext())
             {
-                var data = context.Informations.FirstOrDefault(x => x.Deleted == false && x.SerialNumber == serialNumber && x.DangSuDung == true && x.DaKichHoat == true);
+                var data = context.Informations.FirstOrDefault(x => x.Deleted == false && x.SerialNumber == serialNumber && x.DangSuDung == true && x.DaKichHoat == true && x.LoaiTool == loaiTool && x.HanSuDung > DateTime.Now);
                 if (data != null)
                 {
                     return true;

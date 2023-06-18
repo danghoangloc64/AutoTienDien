@@ -101,6 +101,10 @@
     <Compile Include="Migrations\202305231756456_update-db-3.designer.cs">
       <DependentUpon>202305231756456_update-db-3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306171557343_update-db-0617.cs" />
+    <Compile Include="Migrations\202306171557343_update-db-0617.designer.cs">
+      <DependentUpon>202306171557343_update-db-0617.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\InformationModel.cs" />
     <Compile Include="Model\InformationViewModel.cs" />
@@ -120,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202305231756456_update-db-3.resx">
       <DependentUpon>202305231756456_update-db-3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306171557343_update-db-0617.resx">
+      <DependentUpon>202306171557343_update-db-0617.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

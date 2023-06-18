@@ -18,6 +18,16 @@ namespace Common.Model
         [DisplayName("Mã gửi cho khách hàng")]
         public string Key { get; set; }
 
+
+
+
+        [DisplayName("Hạn sử dụng")]
+        public string HanSuDung { get; set; }
+
+        [DisplayName("Loại tool")]
+        public string LoaiTool { get; set; }
+
+
         [DisplayName("Khách hàng đã kích hoạt")]
         public bool DaKichHoat { get; set; }
 

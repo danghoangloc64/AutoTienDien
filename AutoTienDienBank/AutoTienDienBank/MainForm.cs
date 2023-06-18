@@ -576,7 +576,7 @@ namespace AutoTienDienBank
                 Thread.Sleep(2000);
                 if (!m_bRunning) break;
                 // Chọn thẻ đầu tiên
-                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)466.9, (int)718.0);
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)466.9, (int)726 + 235 * m_iIndexThe);
                 if (!m_bRunning) break;
                 Thread.Sleep(1000);
                 if (!m_bRunning) break;
@@ -2136,7 +2136,7 @@ namespace AutoTienDienBank
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            txtMa.Text = CommonMethod.GetSerialNumber();
+            txtMa.Text = CommonMethod.GetSerialNumber("AutoTienDienBank");
             radioButtonVIB.Checked = Properties.Settings.Default.VIB;
             radioButtonVPB.Checked = Properties.Settings.Default.VPB;
             radioButtonMSB.Checked = Properties.Settings.Default.MSB;

@@ -61,6 +61,8 @@ namespace AutoQuetQR
             this.btnTest = new System.Windows.Forms.Button();
             this.btnRunTay = new System.Windows.Forms.Button();
             this.btnClearLog = new System.Windows.Forms.Button();
+            this.txtMa = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -392,11 +394,30 @@ namespace AutoQuetQR
             this.btnClearLog.UseVisualStyleBackColor = true;
             this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
             // 
+            // txtMa
+            // 
+            this.txtMa.Location = new System.Drawing.Point(45, 436);
+            this.txtMa.Name = "txtMa";
+            this.txtMa.ReadOnly = true;
+            this.txtMa.Size = new System.Drawing.Size(491, 20);
+            this.txtMa.TabIndex = 33;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(11, 440);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(25, 13);
+            this.label11.TabIndex = 34;
+            this.label11.Text = "Mã:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 436);
+            this.ClientSize = new System.Drawing.Size(800, 468);
+            this.Controls.Add(this.txtMa);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.btnClearLog);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.checkBoxUseProxy);
@@ -467,6 +488,8 @@ namespace AutoQuetQR
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.Button btnRunTay;
         private System.Windows.Forms.Button btnClearLog;
+        private System.Windows.Forms.TextBox txtMa;
+        private System.Windows.Forms.Label label11;
     }
 }
 

@@ -18,8 +18,8 @@ namespace AutoTienDienBank
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            string serialNumber = CommonMethod.GetSerialNumber();
-            if ((new InformationBLL()).CheckSerialNumber(serialNumber) == false)
+            string serialNumber = CommonMethod.GetSerialNumber("AutoTienDienBank");
+            if ((new InformationBLL()).CheckSerialNumber(serialNumber, "AutoTienDienBank") == false)
             {
                 Application.Run(new DangKyAutoTienDienBank(serialNumber));
             }

@@ -13,10 +13,10 @@ using System.Windows.Forms;
 
 namespace QuanLyKeyAuto
 {
-    public partial class ThemMoiForm : DevExpress.XtraEditors.XtraForm
+    public partial class UpdateForm : DevExpress.XtraEditors.XtraForm
     {
         private InformationBLL m_objInformationBLL;
-        public ThemMoiForm()
+        public UpdateForm()
         {
             InitializeComponent();
         }

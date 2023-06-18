@@ -1,7 +1,7 @@
 ﻿
 namespace QuanLyKeyAuto
 {
-    partial class ThemMoiForm
+    partial class UpdateForm
     {
         /// <summary>
         /// Required designer variable.
@@ -149,7 +149,7 @@ namespace QuanLyKeyAuto
             this.label5.TabIndex = 4;
             this.label5.Text = "Loại tool:";
             // 
-            // ThemMoiForm
+            // UpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -168,9 +168,9 @@ namespace QuanLyKeyAuto
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ThemMoiForm";
+            this.Name = "UpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Thêm mới key";
+            this.Text = "Sửa hạn sử dụng và loại tool";
             this.Load += new System.EventHandler(this.ThemMoiForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
