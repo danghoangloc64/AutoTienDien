@@ -558,57 +558,57 @@ namespace AutoTienDienBank
                 // Chọn thanh toán
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)206.8, (int)1360.1);
                 if (!m_bRunning) break;
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
                 if (!m_bRunning) break;
                 // Chọn mục điện
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)247.4, (int)1100.0);
                 if (!m_bRunning) break;
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
                 if (!m_bRunning) break;
                 // Chọn mục tài khoản nguồn
-                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)422.1, (int)616.4);
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)373.4, (int)482.3);
                 if (!m_bRunning) break;
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
                 if (!m_bRunning) break;
                 // Chọn mục thẻ
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)816.3, (int)510.7);
                 if (!m_bRunning) break;
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
                 if (!m_bRunning) break;
                 // Chọn thẻ đầu tiên
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)466.9, (int)726 + 235 * m_iIndexThe);
                 if (!m_bRunning) break;
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
                 if (!m_bRunning) break;
                 // Chọn đồng ý
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)531.9, (int)2006.2);
                 if (!m_bRunning) break;
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
                 if (!m_bRunning) break;
                 // Chọn mã khách hàng
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)349.0, (int)864.3);
                 if (!m_bRunning) break;
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
                 if (!m_bRunning) break;
                 // Nhập mã khách
                 KAutoHelper.ADBHelper.InputText(m_strDeviceID, data.Ma);
                 if (!m_bRunning) break;
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
                 if (!m_bRunning) break;
                 // Chọn tiếp theo
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)544.1, (int)1079.7);
                 if (!m_bRunning) break;
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
                 if (!m_bRunning) break;
                 // Chọn tiếp tục
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)540.0, (int)1762.4);
                 if (!m_bRunning) break;
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
                 if (!m_bRunning) break;
                 // Chọn xác nhận
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)544.1, (int)2172.8);
                 if (!m_bRunning) break;
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
                 if (!m_bRunning) break;
                 // Nhập mã pin
                 NhapOTPMBB_Note10Lite(txtMaPin1.Text);
@@ -638,22 +638,22 @@ namespace AutoTienDienBank
                 // Chọn lấy mã otp
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)523.7, (int)1156.9);
                 if (!m_bRunning) break;
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
                 if (!m_bRunning) break;
                 // Chọn nhập otp
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)511.6, (int)730.2);
                 if (!m_bRunning) break;
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
                 if (!m_bRunning) break;
                 // Chọn tiếp tục
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)523.7, (int)2160.6);
                 if (!m_bRunning) break;
-                Thread.Sleep(5000);
+                Thread.Sleep(6000);
                 if (!m_bRunning) break;
                 // Swipe
                 KAutoHelper.ADBHelper.Swipe(m_strDeviceID, 540, 1620, 540, 500);
                 if (!m_bRunning) break;
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
                 if (!m_bRunning) break;
                 // Chọn hoàn thành
                 KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)507.5, (int)2038.7);
@@ -2201,6 +2201,33 @@ namespace AutoTienDienBank
         {
             txtMaPin5.Enabled = enable;
             txtMaPin6.Enabled = enable;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var listDevice = KAutoHelper.ADBHelper.GetDevices();
+                if (listDevice != null && listDevice.Count > 0)
+                {
+                    m_strDeviceID = listDevice.First();
+                }
+                else
+                {
+                    m_strDeviceID = string.Empty;
+                }
+            }
+            catch
+            {
+                m_strDeviceID = string.Empty;
+            }
+            if (string.IsNullOrEmpty(m_strDeviceID))
+            {
+                MessageBox.Show(this, "Không tìm thấy thiết bị.", "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)816.3, (int)510.7);
         }
     }
 }
