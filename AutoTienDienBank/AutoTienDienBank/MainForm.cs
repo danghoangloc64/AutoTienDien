@@ -22,7 +22,7 @@ namespace AutoTienDienBank
         private bool m_bRunning;
         private int m_iSleepTime;
         private int m_iIndexThe;
-
+        private int m_iIndexNCC;
         public MainForm()
         {
             InitializeComponent();
@@ -482,6 +482,7 @@ namespace AutoTienDienBank
             }
             m_bRunning = true;
             m_iIndexThe = int.Parse(cbbThe.Text) - 1;
+            m_iIndexNCC = cbbNCC.SelectedIndex;
             await Task.Run(() =>
             {
                 if (radioButtonVIB.Checked)
@@ -1593,16 +1594,19 @@ namespace AutoTienDienBank
                 //if (!m_bRunning) break;
                 //Thread.Sleep(2000);
                 //if (!m_bRunning) break;
-                // Nhấn nhà cung cấp
-                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 41.0, 32.3);
-                if (!m_bRunning) break;
-                Thread.Sleep(2000);
-                if (!m_bRunning) break;
-                // Nhấn điện lực toàn quốc
-                KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 25.2, 88.2);
-                if (!m_bRunning) break;
-                Thread.Sleep(2000);
-                if (!m_bRunning) break;
+                if (m_iIndexNCC == 1)
+                {
+                    // Nhấn nhà cung cấp
+                    KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 41.0, 32.3);
+                    if (!m_bRunning) break;
+                    Thread.Sleep(2000);
+                    if (!m_bRunning) break;
+                    // Nhấn điện lực toàn quốc
+                    KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 25.2, 88.2);
+                    if (!m_bRunning) break;
+                    Thread.Sleep(2000);
+                    if (!m_bRunning) break;
+                }
                 // Nhấn nguồn tiền
                 KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 34.9, 18.1);
                 if (!m_bRunning) break;
@@ -2143,6 +2147,7 @@ namespace AutoTienDienBank
             radioButtonMBB.Checked = Properties.Settings.Default.MBB;
             cbbModel.SelectedIndex = Properties.Settings.Default.ModelDienThoai;
             cbbThe.SelectedIndex = Properties.Settings.Default.HangThe;
+            cbbNCC.SelectedIndex = Properties.Settings.Default.NCC;
         }
 
         private void radioButtonVIB_CheckedChanged(object sender, EventArgs e)
@@ -2228,6 +2233,12 @@ namespace AutoTienDienBank
             }
 
             KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)816.3, (int)510.7);
+        }
+
+        private void cbbNCC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.NCC = cbbNCC.SelectedIndex;
+            Properties.Settings.Default.Save();
         }
     }
 }

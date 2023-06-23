@@ -94,5 +94,17 @@ namespace AutoTienDienBank.Properties {
                 this["MBB"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int NCC {
+            get {
+                return ((int)(this["NCC"]));
+            }
+            set {
+                this["NCC"] = value;
+            }
+        }
     }
 }

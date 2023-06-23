@@ -55,6 +55,8 @@ namespace AutoTienDienBank
             this.txtMaPin5 = new System.Windows.Forms.TextBox();
             this.txtMaPin6 = new System.Windows.Forms.TextBox();
             this.radioButtonMBB = new System.Windows.Forms.RadioButton();
+            this.cbbNCC = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSelectExcel
@@ -312,11 +314,34 @@ namespace AutoTienDienBank
             this.radioButtonMBB.UseVisualStyleBackColor = true;
             this.radioButtonMBB.CheckedChanged += new System.EventHandler(this.radioButtonMBB_CheckedChanged);
             // 
+            // cbbNCC
+            // 
+            this.cbbNCC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbNCC.FormattingEnabled = true;
+            this.cbbNCC.Items.AddRange(new object[] {
+            "Điện lực TP Hà Nội",
+            "Điện lực toàn quốc"});
+            this.cbbNCC.Location = new System.Drawing.Point(197, 168);
+            this.cbbNCC.Name = "cbbNCC";
+            this.cbbNCC.Size = new System.Drawing.Size(121, 21);
+            this.cbbNCC.TabIndex = 33;
+            this.cbbNCC.SelectedIndexChanged += new System.EventHandler(this.cbbNCC_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 172);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(104, 13);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Chọn nhà cung cấp:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(551, 336);
+            this.Controls.Add(this.cbbNCC);
             this.Controls.Add(this.cbbThe);
             this.Controls.Add(this.cbbModel);
             this.Controls.Add(this.txtMa);
@@ -326,6 +351,7 @@ namespace AutoTienDienBank
             this.Controls.Add(this.radioButtonMBB);
             this.Controls.Add(this.radioButtonMSB);
             this.Controls.Add(this.radioButtonVPB);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.radioButtonVIB);
             this.Controls.Add(this.label7);
@@ -382,6 +408,8 @@ namespace AutoTienDienBank
         private System.Windows.Forms.TextBox txtMaPin5;
         private System.Windows.Forms.TextBox txtMaPin6;
         private System.Windows.Forms.RadioButton radioButtonMBB;
+        private System.Windows.Forms.ComboBox cbbNCC;
+        private System.Windows.Forms.Label label9;
     }
 }
 
