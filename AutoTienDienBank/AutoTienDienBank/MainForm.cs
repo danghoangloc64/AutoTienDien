@@ -1599,12 +1599,17 @@ namespace AutoTienDienBank
                     // Nhấn nhà cung cấp
                     KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 41.0, 32.3);
                     if (!m_bRunning) break;
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
+                    if (!m_bRunning) break;
+                    // Swipe
+                    KAutoHelper.ADBHelper.Swipe(m_strDeviceID, 531, 2103, 531, 1156);
+                    if (!m_bRunning) break;
+                    Thread.Sleep(1000);
                     if (!m_bRunning) break;
                     // Nhấn điện lực toàn quốc
-                    KAutoHelper.ADBHelper.TapByPercent(m_strDeviceID, 25.2, 88.2);
+                    KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)357.1, (int)2002.2);
                     if (!m_bRunning) break;
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
                     if (!m_bRunning) break;
                 }
                 // Nhấn nguồn tiền
