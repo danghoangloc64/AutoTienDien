@@ -757,7 +757,8 @@ namespace AutoTienDienBank
                 Thread.Sleep(2000);
                 if (!m_bRunning) break;
                 // Click ra ngoài
-                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)528.0, (int)1099.5);
+                KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)15.6, (int)1123.5);
+                //KAutoHelper.ADBHelper.Tap(m_strDeviceID, (int)528.0, (int)1099.5);
                 if (!m_bRunning) break;
                 Thread.Sleep(2000);
                 if (!m_bRunning) break;
